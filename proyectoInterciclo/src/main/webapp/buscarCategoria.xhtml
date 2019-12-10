@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+<h:head></h:head> 
+<body> 
+<h1>Buscar Categoria</h1>
+<h:form>
+	<div>
+		<h:outputLabel value="Id" for="id"/>
+		<h:inputText value="#{categoriaControlador.categoria.codigo}" id="id"/>
+		<h:message for="id"/>
+		<h:commandButton action="#{categoriaControlador.filtrar()}" value="Buscar" />
+	</div>
+	
+	<div>
+		<h:dataTable value="#{categoriaControlador.categoria}" var="categoria">
+			<h:column>
+				<f:facet name="header">Código</f:facet>
+				#{categoria.codigo}
+			</h:column>
+			<h:column>
+				<f:facet name="header">Descripción</f:facet>
+				#{categoria.descripcion}
+			</h:column>
+			<h:column>
+				<f:facet name="header">Imagenes</f:facet>
+				#{categoria.imagen}
+			</h:column>
+			<h:column>
+				<h:commandButton action="#{categoriaControlador.eliminarUsuario(categoria.codigo)}" value="Eliminar" />
+			</h:column>
+		</h:dataTable>
+	</div>
+</h:form>
+</body> 
+</html>
