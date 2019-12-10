@@ -1,15 +1,20 @@
 package controlador;
 
-import javax.annotation.ManagedBean;
+import java.util.List;
+
 import javax.annotation.PostConstruct;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
 import javax.inject.Inject;
 
 import Datos.categoriasDAO;
 import modelo.Categoria;
 
 @ManagedBean
+@ViewScoped
 public class categoriaControlador {
 	private Categoria categoria;
+	private List<Categoria> listaCa;
 	
 	@Inject
 	private categoriasDAO cdao;
@@ -17,19 +22,57 @@ public class categoriaControlador {
 	@PostConstruct
 	public void init() {
 		categoria = new Categoria();
+		listaCa= cdao.listarCategoria();
 	}
 	
-	public Categoria getUsuario() {
+	public Categoria getCategoria() {
 		return categoria;
 	}
 
-	public void setUsuario(Categoria categoria) {
+	public void setCategoria(Categoria categoria) {
 		this.categoria = categoria;
 	}
+
+	public List<Categoria> getListaCa() {
+		return listaCa;
+	}
+
+	public void setListaCa(List<Categoria> listaCa) {
+		this.listaCa = listaCa;
+	}
+	
+	public String listado() {
+		listaCa = cdao.listarCategoria();
+		return null;
+	}
+	
+	public String filtrar() {
+		listaCa = cdao.listadoBuscar(categoria.getCodigo());
+		return null;
+	}
+
 	
 	public String guardarCategoria() {
 		System.out.println(categoria);
 		cdao.insertar(categoria);
 		return null;
 	}
+	
+	public String editarCategoria() {
+		cdao.editar(categoria);
+		return null;
+	}
+	
+	public String eliminarUsuario(int codigo) {
+		cdao.eliminar(codigo);
+		return null;
+	}
+	
+	public String Buscar() {
+		Categoria c=cdao.buscar(categoria.getCodigo());
+		listado();
+		categoria=c;
+		return null;
+	}
+
 }

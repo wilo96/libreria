@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+<h:head></h:head> 
+<body> 
+<h1>Buscar</h1>
+<h:form>
+	<div>
+		<h:outputLabel value="Id" for="id"/>
+		<h:inputText value="#{usuarioControlador.usuario.cedula}" id="id"/>
+		<h:message for="id"/>
+		<h:commandButton action="#{usuarioControlador.filtrar()}" value="Buscar" />
+	</div>
+	
+	<div>
+		<h:dataTable value="#{usuarioControlador.usuario}" var="usuario">
+			<h:column>
+				<f:facet name="header">Cédula</f:facet>
+				#{usuario.cedula}
+			</h:column>
+			<h:column>
+				<f:facet name="header">Nombres</f:facet>
+				#{usuario.nombres}
+			</h:column>
+			<h:column>
+				<f:facet name="header">Dirección</f:facet>
+				#{usuario.direccion}
+			</h:column>
+			<h:column>
+				<f:facet name="header">Correo</f:facet>
+				#{usuario.correo}
+			</h:column>
+			
+			<h:column>
+				<f:facet name="header">Contraseña</f:facet>
+				#{usuario.contrasenia}
+			</h:column>
+			<h:column>
+				<f:facet name="header">Administrador</f:facet>
+				#{usuario.administrador}
+			</h:column>
+			<h:column>
+				<f:facet name="header">Imagen</f:facet>
+				#{usuario.imagen}
+			</h:column>
+			<h:column>
+				<f:facet name="header">Ventas</f:facet>
+				#{usuario.ventas}
+			</h:column>
+			<h:column>
+				<h:commandButton action="#{usuarioControlador.eliminarUsuario(usuario.cedula)}" value="Eliminar" />
+			</h:column>
+		</h:dataTable>
+	</div>
+</h:form>
+</body> 
+</html>

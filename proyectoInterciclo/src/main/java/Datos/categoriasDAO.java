@@ -1,8 +1,12 @@
 package Datos;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
 
 import modelo.Categoria;
 
@@ -20,11 +24,27 @@ public class categoriasDAO {
 	}
 	
 	public void eliminar(int codigo) {
-		em.remove(leer(codigo));
+		em.remove(buscar(codigo));
 	}
 	
-	public Categoria leer(int codigo) {
-		em.find(Categoria.class, codigo);
-		return null;
+	public Categoria buscar(int codigo) {
+		Categoria c;
+		c=em.find(Categoria.class, codigo);
+		return c;
+	}
+	
+	public List<Categoria> listarCategoria() {
+		String jpql = "SELECT categoria FROM Categoria categoria";
+		Query q = em.createQuery(jpql, Categoria.class);
+		List<Categoria> categoria = q.getResultList();
+		return categoria;
+	}
+	
+	public List<Categoria> listadoBuscar(int codigo) {
+		System.out.println("cedulaaaaa"+codigo);
+		Categoria ca= buscar(codigo);
+		List<Categoria> listCategoria = new ArrayList<Categoria>();
+		listCategoria.add(ca);
+		return listCategoria;
 	}
 }
