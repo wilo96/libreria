@@ -60,6 +60,22 @@ public class Usuario {
 		@OneToMany(cascade = {CascadeType.ALL}, fetch = FetchType.LAZY)
 		@JoinColumn(name = "id_usuta_fk", referencedColumnName = "cedula")
 		private List<Tarjeta> tarjeta;
+		@Column(name="direccionDefecto")
+		private String direccionDefecto;		
+		
+		@OneToMany(cascade = {CascadeType.ALL}, fetch = FetchType.LAZY)
+		@JoinColumn(name = "id_usu_fk", referencedColumnName = "cedula")
+		private List<Direccion> direccion;
+		
+
+		@OneToMany(cascade = {CascadeType.ALL}, fetch = FetchType.LAZY)
+		@JoinColumn(name = "id_usuta_fk", referencedColumnName = "cedula")
+		private List<Tarjeta> tarjeta;
+		
+		@OneToMany(cascade = {CascadeType.ALL}, fetch = FetchType.LAZY)
+		@JoinColumn(name = "id_usufc_fk", referencedColumnName = "cedula")
+		private List<FacturaCab> facturacab;
+		
 		
 		@OneToMany(cascade = {CascadeType.ALL}, fetch = FetchType.LAZY)
 		@JoinColumn(name = "id_usufc_fk", referencedColumnName = "cedula")
