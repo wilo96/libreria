@@ -12,7 +12,7 @@ import modelo.Usuario;
 
 @Stateless
 public class usuariosDAO {
-	
+	 
 	@Inject
 	private EntityManager em;
 	

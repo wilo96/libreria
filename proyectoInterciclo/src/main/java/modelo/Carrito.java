@@ -13,6 +13,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 @Table(name="carritos")
 public class Carrito {
 	
+	
 	@Id
 	@Column(name="codigo")
 	@GeneratedValue(strategy=GenerationType.AUTO )

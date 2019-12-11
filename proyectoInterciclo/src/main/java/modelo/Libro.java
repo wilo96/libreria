@@ -22,7 +22,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 @Entity(name="libros")
 @Table(name="libros")
 public class Libro {
-	
+	 
 	@Id
 	@Column(name="codigo")	
 	@GeneratedValue( strategy=GenerationType.AUTO )

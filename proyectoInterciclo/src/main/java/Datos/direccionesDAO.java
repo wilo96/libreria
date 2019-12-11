@@ -12,6 +12,7 @@ import modelo.Usuario;
 
 @Stateless
 public class direccionesDAO {
+	
 	@Inject
 	private EntityManager em;
 	

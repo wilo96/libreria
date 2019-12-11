@@ -12,6 +12,7 @@ import modelo.Categoria;
 
 @Stateless
 public class categoriasDAO {
+	
 	@Inject
 	private EntityManager em;
 	

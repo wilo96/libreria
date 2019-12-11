@@ -54,8 +54,7 @@ public class usuarioControlador {
 	}
 	
 	public Usuario filtrar() {
-		this.usuario=udao.buscar(this.usuario.getCedula());
-		 return udao.buscar(this.usuario.getCedula());
+		return this.usuario=udao.buscar(this.usuario.getCedula());
 	}
 
 	public String guardarUsuario() {

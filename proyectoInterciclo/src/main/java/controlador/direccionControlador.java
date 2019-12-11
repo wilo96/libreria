@@ -18,7 +18,7 @@ import modelo.Usuario;
 public class direccionControlador {
 	private Direccion direc;
 	private List<Direccion> listaD;
-	
+	 
 	@Inject
 	private direccionesDAO ddao;
 	

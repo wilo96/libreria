@@ -20,7 +20,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 @Table(name="categorias")
 public class Categoria {
 	
-	@Id
+	@Id 
 	@Column(name="codigo")
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int codigo;

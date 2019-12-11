@@ -136,7 +136,7 @@ public class Usuario {
 		public void setFacturacab(List<FacturaCab> facturacab) {
 			this.facturacab = facturacab;
 		}
-		
+		 
 		public String getDireccionDefecto() {
 			return direccionDefecto;
 		}

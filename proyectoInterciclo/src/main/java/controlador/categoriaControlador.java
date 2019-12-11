@@ -16,7 +16,7 @@ import modelo.Categoria;
 public class categoriaControlador {
 	private Categoria categoria;
 	private List<Categoria> listaCa;
-	
+	 
 	@Inject
 	private categoriasDAO cdao;
 	

@@ -11,6 +11,7 @@ import modelo.Libro;
 
 @Stateless
 public class librosDAO {
+
 	@Inject
 	private EntityManager em;
 	

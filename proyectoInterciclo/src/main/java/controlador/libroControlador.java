@@ -71,6 +71,4 @@ public class libroControlador {
 		return null;
 	}
 	
-	
-	
 }
