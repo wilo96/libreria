@@ -158,14 +158,18 @@
 <h1>Buscar Usuario</h1>
 <h:form>
 	<div>
+
 		<h:Label value="Cedula" for="cedula"/>
 		<h:inputText value="#{usuarioControlador.usuario.cedula}" id="cedula"/>
+
+		<h:outputLabel value="Cedula" for="cedula"/>
+		<h:inputText value="#{usuarioControlador.campoCedula}" id="cedula"/>
 		<h:message for="cedula"/>
-		<h:commandButton action="#{usuarioControlador.filtrar()}" value="Buscar" />
+		<h:commandButton action="#{usuarioControlador.Buscar()}" value="Buscar" />
 	</div>
  
 	<div>
-		<h:dataTable value="#{usuarioControlador.filtrar()}" var="usuario">
+		<h:dataTable value="#{usuarioControlador.usuario}" var="usuario">
 			<h:column>
 				<f:facet name="header">Cédula</f:facet>
 				#{usuario.cedula}
@@ -197,7 +201,7 @@
 			</h:column>
 			<h:column>
 				<f:facet name="header">Dirección</f:facet>
-				#{usuario.direccion}
+				#{usuario.direccionDefecto}
 			</h:column>
 			<h:column>
 				<h:commandButton action="#{usuarioControlador.eliminarUsuario(usuario.cedula)}" value="Eliminar" />

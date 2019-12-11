@@ -28,6 +28,7 @@ public class librosDAO {
 	}
 	
 	public Libro buscar(int codigo) {
+		System.out.println("dao "+codigo);
 		Libro l;
 		l=em.find(Libro.class, codigo);
 		return l;
