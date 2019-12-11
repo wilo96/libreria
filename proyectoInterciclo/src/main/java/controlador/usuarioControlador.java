@@ -16,7 +16,7 @@ import modelo.Usuario;
 @ManagedBean
 @ViewScoped
 public class usuarioControlador {
-	private String campoCedula;
+	
 	private Usuario usuario;
 	private Direccion dir;
 	private List<Usuario> listaU;
