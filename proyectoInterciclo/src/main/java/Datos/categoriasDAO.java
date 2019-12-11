@@ -30,21 +30,16 @@ public class categoriasDAO {
 	public Categoria buscar(int codigo) {
 		Categoria c;
 		c=em.find(Categoria.class, codigo);
+		System.out.println();
 		return c;
 	}
-	
+
 	public List<Categoria> listarCategoria() {
-		String jpql = "SELECT categoria FROM Categoria categoria";
+		String jpql = "SELECT c FROM categorias c";
 		Query q = em.createQuery(jpql, Categoria.class);
-		List<Categoria> categoria = q.getResultList();
+		List<Categoria> categoria = q.getResultList(); 
 		return categoria;
 	}
 	
-	public List<Categoria> listadoBuscar(int codigo) {
-		System.out.println("cedulaaaaa"+codigo);
-		Categoria ca= buscar(codigo);
-		List<Categoria> listCategoria = new ArrayList<Categoria>();
-		listCategoria.add(ca);
-		return listCategoria;
-	}
+	 
 }

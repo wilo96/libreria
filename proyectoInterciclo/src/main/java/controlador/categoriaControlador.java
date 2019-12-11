@@ -1,5 +1,6 @@
 package controlador;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -22,7 +23,7 @@ public class categoriaControlador {
 	@PostConstruct
 	public void init() {
 		categoria = new Categoria();
-		listaCa= cdao.listarCategoria();
+		listaCa= new ArrayList<Categoria>();
 	}
 	
 	public Categoria getCategoria() {
@@ -41,14 +42,12 @@ public class categoriaControlador {
 		this.listaCa = listaCa;
 	}
 	
-	public String listado() {
-		listaCa = cdao.listarCategoria();
-		return null;
+	public List<Categoria> listado() {
+		return cdao.listarCategoria();
 	}
 	
-	public String filtrar() {
-		listaCa = cdao.listadoBuscar(categoria.getCodigo());
-		return null;
+	public Categoria filtrar() {
+		 return cdao.buscar(this.categoria.getCodigo());
 	}
 
 	
@@ -63,7 +62,7 @@ public class categoriaControlador {
 		return null;
 	}
 	
-	public String eliminarUsuario(int codigo) {
+	public String eliminarCategoria(int codigo) {
 		cdao.eliminar(codigo);
 		return null;
 	}

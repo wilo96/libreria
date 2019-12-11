@@ -6,17 +6,14 @@
 
 <h:head></h:head> 
 <body> 
-<h1>Buscar Categoria</h1>
+<h1>Listar Categorias</h1>
 <h:form>
-	<div>
-		<h:outputLabel value="Id" for="id"/>
-		<h:inputText value="#{categoriaControlador.categoria.codigo}" id="id"/>
-		<h:message for="id"/>
-		<h:commandButton action="#{categoriaControlador.filtrar()}" value="Buscar" />
-	</div>
-	
-	<div>
-		<h:dataTable value="#{categoriaControlador.filtrar()}" var="categoria">
+
+<h:commandButton action="#{categoriaControlador.listado()}" value="Listar" />
+
+
+
+		<h:dataTable value="#{categoriaControlador.listado()}" var="categoria">
 			<h:column>
 				<f:facet name="header">Código</f:facet>
 				#{categoria.codigo}
@@ -26,14 +23,15 @@
 				#{categoria.descripcion}
 			</h:column>
 			<h:column>
-				<f:facet name="header">Imagenes</f:facet>
+				<f:facet name="header">Imagen</f:facet>
 				#{categoria.imagen}
 			</h:column>
+			
 			<h:column>
 				<h:commandButton action="#{categoriaControlador.eliminarCategoria(categoria.codigo)}" value="Eliminar" />
 			</h:column>
 		</h:dataTable>
-	</div>
+	
 </h:form>
 </body> 
 </html>
