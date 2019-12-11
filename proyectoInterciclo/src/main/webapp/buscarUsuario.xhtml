@@ -10,9 +10,9 @@
 <h:form>
 	<div>
 		<h:outputLabel value="Cedula" for="cedula"/>
-		<h:inputText value="#{usuarioControlador.usuario.cedula}" id="cedula"/>
+		<h:inputText value="#{usuarioControlador.campoCedula}" id="cedula"/>
 		<h:message for="cedula"/>
-		<h:commandButton action="#{usuarioControlador.filtrar()}" value="Buscar" />
+		<h:commandButton action="#{usuarioControlador.Buscar()}" value="Buscar" />
 	</div>
  
 	<div>

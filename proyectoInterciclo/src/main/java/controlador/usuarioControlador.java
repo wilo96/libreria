@@ -15,7 +15,7 @@ import modelo.Usuario;
 @ManagedBean
 @ViewScoped
 public class usuarioControlador {
-	//private String campoCedula;
+	private String campoCedula;
 	private Usuario usuario;
 	private List<Usuario> listaU;
 	
@@ -23,8 +23,7 @@ public class usuarioControlador {
 	private usuariosDAO udao;
 	
 	@PostConstruct
-	public void init() {
-	//	campoCedula=;
+	public void init() {	
 		usuario = new Usuario();
 		listaU= new ArrayList<Usuario>();
 	}
@@ -53,13 +52,21 @@ public class usuarioControlador {
 
 
 
+	public String getCampoCedula() {
+		return campoCedula;
+	}
+
+	public void setCampoCedula(String campoCedula) {
+		this.campoCedula = campoCedula;
+	}
+
 	public List<Usuario> listado() {
 		return udao.listarUsuario();
 	}
 	
 	public Usuario filtrar() {
-		System.out.println("filtrar "+this.usuario.getCedula());
-		 return udao.buscar(this.usuario.getCedula());
+		System.out.println("filtrar "+this.campoCedula);
+		 return udao.buscar(this.campoCedula);
 	}
 
 	public String guardarUsuario() {
@@ -80,7 +87,7 @@ public class usuarioControlador {
 	}
 	
 	public String Buscar() {
-		Usuario u=udao.buscar(usuario.getCedula());
+		Usuario u=udao.buscar(this.campoCedula);
 		listado();
 		usuario=u;
 		return null;
