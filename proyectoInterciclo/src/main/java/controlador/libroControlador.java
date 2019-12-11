@@ -45,8 +45,8 @@ public class libroControlador {
 		return null;
 	}
 
+	
 	public Libro filtrar() {
-		System.out.println("dao "+this.libro.getCodigo());
 		 return ldao.buscar(this.libro.getCodigo());
 	}
 

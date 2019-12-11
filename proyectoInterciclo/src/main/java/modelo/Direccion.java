@@ -18,8 +18,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 @Entity(name="direcciones")
 @Table(name="direcciones")
 public class Direccion {
-	
-	@Id 
+	@Id
 	@Column(name="codigo")
 	@GeneratedValue(strategy=GenerationType.AUTO )
 	private int codigo;

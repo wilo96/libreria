@@ -225,3 +225,53 @@
 </body>
 </html>
 
+=======
+<h:head></h:head> 
+<body> 
+<h1>Crear Libro</h1>
+
+<h:form>
+	<h:panelGrid columns="3">
+		
+		<h:outputLabel value="Titulo:" for="titulo"/>
+		<h:inputText value="#{libroControlador.libro.titulo}" id="titulo"/>
+		<h:message for="titulo"/>
+		
+		<h:outputLabel value="Autor:" for="autor"/>
+		<h:inputText value="#{libroControlador.libro.autor}" id="autor"/>
+		<h:message for="autor"/>
+		
+		<h:outputLabel value="Editorial:" for="editorial"/>
+		<h:inputText value="#{libroControlador.libro.editorial}" id="editorial"/>
+		<h:message for="editorial"/>
+		
+		<h:outputLabel value="Año publicación:" for="anioPublicacion"/>
+		<h:inputText value="#{libroControlador.libro.aniopublicacion}" id="anioPublicacion"/>
+		<h:message for="anioPublicacion"/>
+		
+		<h:outputLabel value="Categoria ID:" for="categorid"/>
+		<h:inputText value="#{libroControlador.libro.id_cat_fk}" id="categorid"/>
+		<h:message for="categorid"/>
+		
+		<h:outputLabel value="Precio:" for="precio"/>
+		<h:inputText value="#{libroControlador.libro.precio}" id="precio"/>
+		<h:message for="precio"/>
+		
+		<h:outputLabel value="Descuento:" for="descuento"/>
+		<h:inputText value="#{libroControlador.libro.descuento}" id="descuento"/>
+		<h:message for="descuento"/>
+		
+		<h:outputLabel value="Stock:" for="stock"/>
+		<h:inputText value="#{libroControlador.libro.stock}" id="stock"/>
+		<h:message for="stock"/>
+		
+		<h:outputLabel value="Imagen:" for="imagen"/>
+		<h:inputText value="#{libroControlador.libro.imagen}" id="imagen"/>
+		<h:message for="imagen"/>
+		
+		<h:commandButton action="#{libroControlador.guardarLibro()}" value="Guardar" />
+	</h:panelGrid>
+</h:form>
+</body> 
+</html>
+>>>>>>> 216ae30 Actualizacion de tablas y cruds de libro y categoria

@@ -231,6 +231,60 @@
 <!-- AdminLTE for demo purposes -->
 <script src="resources/dist/js/demo.js"></script>
 
-</body>
-</html>
 
+
+<h1>Buscar Libro</h1>
+<h:form>
+	<div>
+		<h:outputLabel value="Id" for="id"/>
+		<h:inputText value="#{libroControlador.libro.codigo}" id="id"/>
+		<h:message for="id"/>
+		<h:commandButton action="#{libroControlador.filtrar()}" value="Buscar" />
+	</div>
+ 
+	<div>
+		<h:dataTable value="#{libroControlador.filtrar()}" var="libro">
+			<h:column>
+				<f:facet name="header">Codigo</f:facet>
+				#{libro.codigo}
+			</h:column>
+			<h:column>
+				<f:facet name="header">Titulo</f:facet>
+				#{libro.titulo}
+			</h:column>
+			<h:column>
+				<f:facet name="header">Autor</f:facet>
+				#{libro.autor}
+			</h:column>
+			<h:column>
+				<f:facet name="header">Editorial</f:facet>
+				#{libro.editorial}
+			</h:column>
+			<h:column>
+				<f:facet name="header">Año publicación</f:facet>
+				#{libro.aniopublicacion}
+			</h:column>
+			<h:column>
+				<f:facet name="header">Id Categoria</f:facet>
+				#{libro.id_cat_fk}
+			</h:column>
+			<h:column>
+				<f:facet name="header">Precio</f:facet>
+				#{libro.precio}
+			</h:column>
+			<h:column>
+				<f:facet name="header">Descuento</f:facet>
+				#{libro.descuento}
+			</h:column>
+			<h:column>
+				<f:facet name="header">Stock</f:facet>
+				#{libro.stock}
+			</h:column>
+			<h:column>
+				<h:commandButton action="#{libroControlador.eliminarLibro(libro.codigo)}" value="Eliminar" />
+			</h:column>
+		</h:dataTable>
+	</div>
+</h:form>
+</body> 
+</html>

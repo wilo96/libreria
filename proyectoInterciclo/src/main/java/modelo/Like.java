@@ -11,8 +11,6 @@ import javax.persistence.Table;
 @Entity(name="likes")
 @Table(name="likes")
 public class Like {
-	
-	
 	@Id
 	@Column(name="codigo")	
 	@GeneratedValue( strategy=GenerationType.AUTO )

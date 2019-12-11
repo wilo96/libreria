@@ -231,3 +231,59 @@
 </body>
 </html>
 
+=======
+<h:head></h:head> 
+<body> 
+<h1>Listar Libro</h1>
+<h:form>
+<div>
+
+<h:commandButton action="#{libroControlador.listado()}" value="Listar" />
+</div>
+<div>
+		<h:dataTable value="#{libroControlador.listado()}" var="libro">
+			<h:column>
+				<f:facet name="header">Codigo</f:facet>
+				#{libro.codigo}
+			</h:column>
+			<h:column>
+				<f:facet name="header">Titulo</f:facet>
+				#{libro.titulo}
+			</h:column>
+			<h:column>
+				<f:facet name="header">Autor</f:facet>
+				#{libro.autor}
+			</h:column>
+			<h:column>
+				<f:facet name="header">Editorial</f:facet>
+				#{libro.editorial}
+			</h:column>
+			<h:column>
+				<f:facet name="header">Año publicación</f:facet>
+				#{libro.aniopublicacion}
+			</h:column>
+			<h:column>
+				<f:facet name="header">Id Categoria</f:facet>
+				#{libro.id_cat_fk}
+			</h:column>
+			<h:column>
+				<f:facet name="header">Precio</f:facet>
+				#{libro.precio}
+			</h:column>
+			<h:column>
+				<f:facet name="header">Descuento</f:facet>
+				#{libro.descuento}
+			</h:column>
+			<h:column>
+				<f:facet name="header">Stock</f:facet>
+				#{libro.stock}
+			</h:column>
+			<h:column>
+				<h:commandButton action="#{libroControlador.eliminarLibro(libro.codigo)}" value="Eliminar" />
+			</h:column>
+		</h:dataTable>
+	</div>
+	</h:form>
+</body> 
+</html>
+>>>>>>> 216ae30 Actualizacion de tablas y cruds de libro y categoria

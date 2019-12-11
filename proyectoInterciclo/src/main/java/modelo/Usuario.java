@@ -64,8 +64,7 @@ public class Usuario {
 		@OneToMany(cascade = {CascadeType.ALL}, fetch = FetchType.LAZY)
 		@JoinColumn(name = "id_usufc_fk", referencedColumnName = "cedula")
 		private List<FacturaCab> facturacab;
-		
-		
+
 		public String getCedula() {
 			return cedula;
 		}
@@ -117,12 +116,7 @@ public class Usuario {
 		public void setDireccion(List<Direccion> direccion) {
 			this.direccion = direccion;
 		}
-		public List<Like> getGusta() {
-			return gusta;
-		}
-		public void setGusta(List<Like> gusta) {
-			this.gusta = gusta;
-		}
+		
 		
 		public List<Tarjeta> getTarjeta() {
 			return tarjeta;
@@ -143,12 +137,17 @@ public class Usuario {
 		public void setDireccionDefecto(String direccionDefecto) {
 			this.direccionDefecto = direccionDefecto;
 		}
+
 		@Override
 		public String toString() {
 			return "Usuario [cedula=" + cedula + ", nombres=" + nombres + ", telefono=" + telefono + ", correo="
 					+ correo + ", contrasenia=" + contrasenia + ", administrador=" + administrador + ", imagen="
 					+ imagen + ", direccionDefecto=" + direccionDefecto + "]";
 		}
+		public void setGusta(List<Like> gusta) {
+			this.gusta = gusta;
+		}
+
 
 		
 }

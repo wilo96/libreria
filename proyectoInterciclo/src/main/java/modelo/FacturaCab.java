@@ -16,8 +16,7 @@ import javax.persistence.Table;
 @Entity(name="FacturaCabs")
 @Table(name="FacturaCabs")
 public class FacturaCab {
-	
-	
+
 	@Id
 	@Column(name = "codigo")
 	@GeneratedValue(strategy=GenerationType.AUTO )

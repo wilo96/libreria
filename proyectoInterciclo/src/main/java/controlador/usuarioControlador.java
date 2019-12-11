@@ -10,6 +10,7 @@ import javax.inject.Inject;
 
 import Datos.direccionesDAO;
 import Datos.usuariosDAO;
+import modelo.Direccion;
 import modelo.Usuario;
 
 @ManagedBean
@@ -17,10 +18,14 @@ import modelo.Usuario;
 public class usuarioControlador {
 	private String campoCedula;
 	private Usuario usuario;
+	private Direccion dir;
 	private List<Usuario> listaU;
 	
 	@Inject
 	private usuariosDAO udao;
+	
+	@Inject
+	private direccionesDAO ddao;
 	
 	@PostConstruct
 	public void init() {	
@@ -66,11 +71,13 @@ public class usuarioControlador {
 	
 	public Usuario filtrar() {
 		System.out.println("filtrar "+this.campoCedula);
-		 return udao.buscar(this.campoCedula);
+		this.usuario=udao.buscar(this.usuario.getCedula());
+		 return udao.buscar(this.usuario.getCedula());
 	}
 
 	public String guardarUsuario() {
 		System.out.println(usuario);
+		//System.out.println(usuario.getCedula());
 		udao.insertar(usuario);
 		//ddao.insertar(dir);
 		return null;
