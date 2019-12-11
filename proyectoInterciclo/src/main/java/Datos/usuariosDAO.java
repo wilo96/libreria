@@ -35,9 +35,10 @@ public class usuariosDAO {
 	}
 
 	public List<Usuario> listarUsuario() {
-		String jpql = "SELECT u FROM usuairos u";
+		String jpql = "SELECT u FROM usuarios u";
 		Query q = em.createQuery(jpql, Usuario.class);
-		List<Usuario> usuario = q.getResultList(); 
+		List<Usuario> usuario = q.getResultList();
+		System.out.println("usuariosssssssssss"+usuario.toString());
 		return usuario;
 	}
 

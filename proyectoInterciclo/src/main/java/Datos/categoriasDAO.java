@@ -41,5 +41,4 @@ public class categoriasDAO {
 		return categoria;
 	}
 	
-	 
 }

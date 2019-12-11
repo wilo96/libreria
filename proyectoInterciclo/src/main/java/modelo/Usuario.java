@@ -1,10 +1,16 @@
 package modelo;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.hibernate.validator.constraints.NotEmpty;
@@ -12,6 +18,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 @Entity(name="usuarios")
 @Table(name="usuarios")
 public class Usuario {
+	
 		@Id
 		@Column(name="cedula")
 		private String cedula;
@@ -19,10 +26,6 @@ public class Usuario {
 		@NotEmpty
 		@Column(name="nombres")
 		private String nombres;
-		
-		@NotEmpty
-		@Column(name="direccion")
-		private String direccion;
 		
 		@NotEmpty
 		@Column(name="telefono")
@@ -36,15 +39,38 @@ public class Usuario {
 		@Column(name="contrasenia")
 		private String contrasenia;
 		
+		@OneToMany(cascade = {CascadeType.ALL}, fetch = FetchType.EAGER)
+		@JoinColumn(name = "id_gustausu_fk", referencedColumnName = "cedula")
+		private List<Like> gusta;
+		
 		@Column(name="administrador")
 		private String administrador;
 		
 		@Column(name="imagen")
 		private String imagen;
 		
-		@Column(name="ventas")
-		private int ventas;
+		@Column(name="direccionDefecto")
+		private String direccionDefecto;		
 		
+		@OneToMany(cascade = {CascadeType.ALL}, fetch = FetchType.LAZY)
+		@JoinColumn(name = "id_usu_fk", referencedColumnName = "cedula")
+		private List<Direccion> direccion;
+		
+
+		@OneToMany(cascade = {CascadeType.ALL}, fetch = FetchType.LAZY)
+		@JoinColumn(name = "id_usuta_fk", referencedColumnName = "cedula")
+		private List<Tarjeta> tarjeta;
+		
+		@OneToMany(cascade = {CascadeType.ALL}, fetch = FetchType.LAZY)
+		@JoinColumn(name = "id_usufc_fk", referencedColumnName = "cedula")
+		private List<FacturaCab> facturacab;
+		
+		@Override
+		public String toString() {
+			return "Usuario [cedula=" + cedula + ", nombres=" + nombres + ", telefono=" + telefono + ", correo="
+					+ correo + ", contrasenia=" + contrasenia + ", administrador=" + administrador + ", imagen="
+					+ imagen + "]";
+		}
 		public String getCedula() {
 			return cedula;
 		}
@@ -57,12 +83,7 @@ public class Usuario {
 		public void setNombres(String nombres) {
 			this.nombres = nombres;
 		}
-		public String getDireccion() {
-			return direccion;
-		}
-		public void setDireccion(String direccion) {
-			this.direccion = direccion;
-		}
+
 		public String getTelefono() {
 			return telefono;
 		}
@@ -92,18 +113,38 @@ public class Usuario {
 		}
 		public void setImagen(String imagen) {
 			this.imagen = imagen;
+		}	
+		
+		
+		public List<Direccion> getDireccion() {
+			return direccion;
 		}
-		public int getVentas() {
-			return ventas;
+		public void setDireccion(List<Direccion> direccion) {
+			this.direccion = direccion;
 		}
-		public void setVentas(int ventas) {
-			this.ventas = ventas;
+		public List<Like> getGusta() {
+			return gusta;
 		}
-		@Override
-		public String toString() {
-			return "usuario [cedula=" + cedula + ", nombres=" + nombres + ", direccion=" + direccion + ", telefono="
-					+ telefono + ", correo=" + correo + ", contrasenia=" + contrasenia + ", administrador="
-					+ administrador + ", imagen=" + imagen + "]";
+		public void setGusta(List<Like> gusta) {
+			this.gusta = gusta;
 		}
+		
+		
+		
+		
+		public List<Tarjeta> getTarjeta() {
+			return tarjeta;
+		}
+		public void setTarjeta(List<Tarjeta> tarjeta) {
+			this.tarjeta = tarjeta;
+		}
+		public List<FacturaCab> getFacturacab() {
+			return facturacab;
+		}
+		public void setFacturacab(List<FacturaCab> facturacab) {
+			this.facturacab = facturacab;
+		}
+
+
 		
 }

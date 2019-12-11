@@ -2,19 +2,25 @@ package controlador;
 
 import java.util.List;
 
-import javax.annotation.ManagedBean;
+import javax.faces.bean.ManagedBean;
 import javax.annotation.PostConstruct;
+import javax.faces.bean.ViewScoped;
 import javax.inject.Inject;
 
+import Datos.categoriasDAO;
 import Datos.librosDAO;
 import modelo.Libro;
+import modelo.Usuario;
 
 @ManagedBean
+@ViewScoped
 public class libroControlador {
 	private Libro libro;
 	
 	@Inject
 	private librosDAO ldao;
+	@Inject
+	private categoriasDAO cdao;
 	
 	@PostConstruct
 	public void init() {
@@ -28,27 +34,32 @@ public class libroControlador {
 	public void setLibro(Libro libro) {
 		this.libro = libro;
 	}
-	
+
 	public List<Libro> listado() {
 		return ldao.listarLibro();
 	}
 	
-	public Libro filtrar() {
-		 return ldao.buscar(this.libro.getCodigo());
-	}
-
-	public String guardarUsuario() {
+	public String guardarLibro() {
 		System.out.println(libro);
 		ldao.insertar(libro);
 		return null;
 	}
+	/*
+	public Libro filtrar() {
+		this.libro=ldao.buscar(this.libro.getCodigo());
+		 return ldao.buscar(this.libro.getCodigo());
+	}*/
+	public Libro filtrar() {
+		 return ldao.buscar(this.libro.getCodigo());
+	}
+
 	
-	public String editarUsuario() {
+	public String editarLibro() {
 		ldao.editar(libro);
 		return null;
 	}
 	
-	public String eliminarUsuario(int codigo) {
+	public String eliminarLibro(int codigo) {
 		ldao.eliminar(codigo);
 		return null;
 	}
@@ -59,4 +70,7 @@ public class libroControlador {
 		libro=l;
 		return null;
 	}
+	
+	
+	
 }

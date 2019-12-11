@@ -22,12 +22,8 @@
 				#{categoria.codigo}
 			</h:column>
 			<h:column>
-				<f:facet name="header">Descripción</f:facet>
+				<f:facet name="header">Nombre</f:facet>
 				#{categoria.descripcion}
-			</h:column>
-			<h:column>
-				<f:facet name="header">Imagenes</f:facet>
-				#{categoria.imagen}
 			</h:column>
 			<h:column>
 				<h:commandButton action="#{categoriaControlador.eliminarCategoria(categoria.codigo)}" value="Eliminar" />
