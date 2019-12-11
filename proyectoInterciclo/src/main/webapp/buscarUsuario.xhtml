@@ -220,7 +220,7 @@
 	</div>
  
 	<div>
-		<h:dataTable value="#{usuarioControlador.filtrar()}" var="usuario">
+		<h:dataTable value="#{usuarioControlador.usuario}" var="usuario">
 			<h:column>
 				<f:facet name="header">Cédula</f:facet>
 				#{usuario.cedula}
@@ -252,7 +252,7 @@
 			</h:column>
 			<h:column>
 				<f:facet name="header">Dirección</f:facet>
-				#{usuario.direccion}
+				#{usuario.direccionDefecto}
 			</h:column>
 			<h:column>
 				<h:commandButton action="#{usuarioControlador.eliminarUsuario(usuario.cedula)}" value="Eliminar" />

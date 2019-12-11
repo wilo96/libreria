@@ -159,11 +159,13 @@ public class Usuario {
 			return "Usuario [cedula=" + cedula + ", nombres=" + nombres + ", telefono=" + telefono + ", correo="
 					+ correo + ", contrasenia=" + contrasenia + ", administrador=" + administrador + ", imagen="
 					+ imagen + ", direccionDefecto=" + direccionDefecto + "]";
+<<<<<<< Upstream, based on branch 'master' of https://github.com/wilo96/libreria.git
 		}
 		public void setGusta(List<Like> gusta) {
 			this.gusta = gusta;
+=======
+>>>>>>> 48f9c36 litar
 		}
-
 
 		
 }

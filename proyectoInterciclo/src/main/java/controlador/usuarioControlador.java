@@ -10,25 +10,25 @@ import javax.inject.Inject;
 
 import Datos.direccionesDAO;
 import Datos.usuariosDAO;
-import modelo.Direccion;
 import modelo.Usuario;
 
 @ManagedBean
 @ViewScoped
 public class usuarioControlador {
-	
+	//private String campoCedula;
 	private Usuario usuario;
-	private Direccion dir;
 	private List<Usuario> listaU;
 	
 	@Inject
 	private usuariosDAO udao;
 	
-	@Inject
-	private direccionesDAO ddao;
-	
 	@PostConstruct
+<<<<<<< Upstream, based on branch 'master' of https://github.com/wilo96/libreria.git
 	public void init() {	
+=======
+	public void init() {
+	//	campoCedula=;
+>>>>>>> 48f9c36 litar
 		usuario = new Usuario();
 		listaU= new ArrayList<Usuario>();
 	}
@@ -57,6 +57,7 @@ public class usuarioControlador {
 
 
 
+<<<<<<< Upstream, based on branch 'master' of https://github.com/wilo96/libreria.git
 	public String getCampoCedula() {
 		return campoCedula;
 	}
@@ -65,11 +66,14 @@ public class usuarioControlador {
 		this.campoCedula = campoCedula;
 	}
 
+=======
+>>>>>>> 48f9c36 litar
 	public List<Usuario> listado() {
 		return udao.listarUsuario();
 	}
 	
 	public Usuario filtrar() {
+<<<<<<< Upstream, based on branch 'master' of https://github.com/wilo96/libreria.git
 <<<<<<< Upstream, based on branch 'master' of https://github.com/wilo96/libreria.git
 		System.out.println("filtrar "+this.campoCedula);
 		this.usuario=udao.buscar(this.usuario.getCedula());
@@ -77,11 +81,14 @@ public class usuarioControlador {
 =======
 		return this.usuario=udao.buscar(this.usuario.getCedula());
 >>>>>>> 2f25540 Actualizacion de Clases
+=======
+		System.out.println("filtrar "+this.usuario.getCedula());
+		 return udao.buscar(this.usuario.getCedula());
+>>>>>>> 48f9c36 litar
 	}
 
 	public String guardarUsuario() {
 		System.out.println(usuario);
-		//System.out.println(usuario.getCedula());
 		udao.insertar(usuario);
 		//ddao.insertar(dir);
 		return null;
