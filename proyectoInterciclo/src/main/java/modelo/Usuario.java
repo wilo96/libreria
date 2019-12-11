@@ -146,10 +146,9 @@ public class Usuario {
 		@Override
 		public String toString() {
 			return "Usuario [cedula=" + cedula + ", nombres=" + nombres + ", telefono=" + telefono + ", correo="
-					+ correo + ", contrasenia=" + contrasenia + ", gusta=" + gusta + ", administrador=" + administrador
-					+ ", imagen=" + imagen + ", direccionDefecto=" + direccionDefecto + "]";
+					+ correo + ", contrasenia=" + contrasenia + ", administrador=" + administrador + ", imagen="
+					+ imagen + ", direccionDefecto=" + direccionDefecto + "]";
 		}
-
 
 		
 }

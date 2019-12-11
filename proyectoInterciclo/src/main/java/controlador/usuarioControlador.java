@@ -10,25 +10,21 @@ import javax.inject.Inject;
 
 import Datos.direccionesDAO;
 import Datos.usuariosDAO;
-import modelo.Direccion;
 import modelo.Usuario;
 
 @ManagedBean
 @ViewScoped
 public class usuarioControlador {
-	
+	//private String campoCedula;
 	private Usuario usuario;
-	private Direccion dir;
 	private List<Usuario> listaU;
 	
 	@Inject
 	private usuariosDAO udao;
 	
-	@Inject
-	private direccionesDAO ddao;
-	
 	@PostConstruct
 	public void init() {
+	//	campoCedula=;
 		usuario = new Usuario();
 		listaU= new ArrayList<Usuario>();
 	}
@@ -37,29 +33,37 @@ public class usuarioControlador {
 		return usuario;
 	}
 
+
+
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
 	}
-	
+
+
+
 	public List<Usuario> getListaU() {
 		return listaU;
 	}
 
+
+
 	public void setListaU(List<Usuario> listaU) {
 		this.listaU = listaU;
 	}
-	
+
+
+
 	public List<Usuario> listado() {
 		return udao.listarUsuario();
 	}
 	
 	public Usuario filtrar() {
-		return udao.buscar(this.usuario.getCedula());
+		System.out.println("filtrar "+this.usuario.getCedula());
+		 return udao.buscar(this.usuario.getCedula());
 	}
 
 	public String guardarUsuario() {
 		System.out.println(usuario);
-		//System.out.println(usuario.getCedula());
 		udao.insertar(usuario);
 		//ddao.insertar(dir);
 		return null;

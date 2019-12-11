@@ -30,8 +30,10 @@ public class usuariosDAO {
 	}
 	
 	public Usuario buscar(String cedula) {
+		System.out.println("dao "+cedula);
 		Usuario u;
 		u=em.find(Usuario.class, cedula);
+		System.out.println();
 		return u;
 	}
 
