@@ -65,12 +65,7 @@ public class Usuario {
 		@JoinColumn(name = "id_usufc_fk", referencedColumnName = "cedula")
 		private List<FacturaCab> facturacab;
 		
-		@Override
-		public String toString() {
-			return "Usuario [cedula=" + cedula + ", nombres=" + nombres + ", telefono=" + telefono + ", correo="
-					+ correo + ", contrasenia=" + contrasenia + ", administrador=" + administrador + ", imagen="
-					+ imagen + "]";
-		}
+		
 		public String getCedula() {
 			return cedula;
 		}
@@ -129,9 +124,6 @@ public class Usuario {
 			this.gusta = gusta;
 		}
 		
-		
-		
-		
 		public List<Tarjeta> getTarjeta() {
 			return tarjeta;
 		}
@@ -143,6 +135,19 @@ public class Usuario {
 		}
 		public void setFacturacab(List<FacturaCab> facturacab) {
 			this.facturacab = facturacab;
+		}
+		
+		public String getDireccionDefecto() {
+			return direccionDefecto;
+		}
+		public void setDireccionDefecto(String direccionDefecto) {
+			this.direccionDefecto = direccionDefecto;
+		}
+		@Override
+		public String toString() {
+			return "Usuario [cedula=" + cedula + ", nombres=" + nombres + ", telefono=" + telefono + ", correo="
+					+ correo + ", contrasenia=" + contrasenia + ", gusta=" + gusta + ", administrador=" + administrador
+					+ ", imagen=" + imagen + ", direccionDefecto=" + direccionDefecto + "]";
 		}
 
 
