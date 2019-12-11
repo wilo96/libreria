@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+<h:head></h:head> 
+<h1>Editar Libro</h1>
+<body> 
+<h:form>
+	<h:panelGrid columns="2">
+		<h:outputLabel value="Codigo:" for="codigo"/>
+		<h:inputText value="#{libroControlador.libro.codigo}" id="codigo"/>
+		<h:message for="codigo"/>
+		
+		<h:outputLabel value="Titulo:" for="titulo"/>
+		<h:inputText value="#{libroControlador.libro.titulo}" id="titulo"/>
+		<h:message for="titulo"/>
+		
+		<h:outputLabel value="Autor:" for="autor"/>
+		<h:inputText value="#{libroControlador.libro.autor}" id="autor"/>
+		<h:message for="autor"/>
+		
+		<h:outputLabel value="Editorial:" for="editorial"/>
+		<h:inputText value="#{libroControlador.libro.editorial}" id="editorial"/>
+		<h:message for="editorial"/>
+		
+		<h:outputLabel value="Año publicación:" for="anioPublicacion"/>
+		<h:inputText value="#{libroControlador.libro.aniopublicacion}" id="anioPublicacion"/>
+		<h:message for="anioPublicacion"/>
+		
+		<h:outputLabel value="Categoria ID:" for="categorid"/>
+		<h:inputText value="#{libroControlador.libro.id_cat_fk}" id="categorid"/>
+		<h:message for="categorid"/>
+		
+		<h:outputLabel value="Precio:" for="precio"/>
+		<h:inputText value="#{libroControlador.libro.precio}" id="precio"/>
+		<h:message for="precio"/>
+		
+		<h:outputLabel value="Descuento:" for="descuento"/>
+		<h:inputText value="#{libroControlador.libro.descuento}" id="descuento"/>
+		<h:message for="descuento"/>
+		
+		<h:outputLabel value="Stock:" for="stock"/>
+		<h:inputText value="#{libroControlador.libro.stock}" id="stock"/>
+		<h:message for="stock"/>
+		
+		<h:outputLabel value="Imagen:" for="imagen"/>
+		<h:inputText value="#{libroControlador.libro.imagen}" id="imagen"/>
+		<h:message for="imagen"/>
+		
+		<h:commandButton action="#{libroControlador.editarLibro()}" value="Editar" />
+	</h:panelGrid>
+</h:form>
+</body>  
+</html>
