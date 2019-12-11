@@ -33,20 +33,12 @@ public class usuariosDAO {
 		u=em.find(Usuario.class, cedula);
 		return u;
 	}
-	
-	public List<Usuario> listarUsuarios() {
-		String jpql = "SELECT usuario FROM Usuario usuario";
+
+	public List<Usuario> listarUsuario() {
+		String jpql = "SELECT u FROM usuairos u";
 		Query q = em.createQuery(jpql, Usuario.class);
-		List<Usuario> usuarios = q.getResultList();
-		return usuarios;
-	}
-	
-	public List<Usuario> listadoBuscar(String cedula) {
-		System.out.println("cedulaaaaa"+cedula);
-		Usuario us= buscar(cedula);
-		List<Usuario> listUsuario = new ArrayList<Usuario>();
-		listUsuario.add(us);
-		return listUsuario;
+		List<Usuario> usuario = q.getResultList(); 
+		return usuario;
 	}
 
 }

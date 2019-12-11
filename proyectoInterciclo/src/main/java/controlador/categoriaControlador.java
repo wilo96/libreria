@@ -50,7 +50,6 @@ public class categoriaControlador {
 		 return cdao.buscar(this.categoria.getCodigo());
 	}
 
-	
 	public String guardarCategoria() {
 		System.out.println(categoria);
 		cdao.insertar(categoria);

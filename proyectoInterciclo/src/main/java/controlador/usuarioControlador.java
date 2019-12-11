@@ -1,5 +1,6 @@
 package controlador;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -8,6 +9,7 @@ import javax.faces.bean.ViewScoped;
 import javax.inject.Inject;
 
 import Datos.usuariosDAO;
+
 import modelo.Usuario;
 
 @ManagedBean
@@ -23,7 +25,7 @@ public class usuarioControlador {
 	@PostConstruct
 	public void init() {
 		usuario = new Usuario();
-		listaU = udao.listarUsuarios();
+		listaU= new ArrayList<Usuario>();
 	}
 	
 	public Usuario getUsuario() {
@@ -42,17 +44,14 @@ public class usuarioControlador {
 		this.listaU = listaU;
 	}
 	
-	public String listado() {
-		listaU = udao.listarUsuarios();
-		return null;
+	public List<Usuario> listado() {
+		return udao.listarUsuario();
 	}
 	
-	public String filtrar() {
-		listaU = udao.listadoBuscar(usuario.getCedula());
-		return null;
+	public Usuario filtrar() {
+		 return udao.buscar(this.usuario.getCedula());
 	}
 
-	
 	public String guardarUsuario() {
 		System.out.println(usuario);
 		udao.insertar(usuario);
@@ -60,7 +59,6 @@ public class usuarioControlador {
 	}
 	
 	public String editarUsuario() {
-		System.out.println();
 		udao.editar(usuario);
 		return null;
 	}

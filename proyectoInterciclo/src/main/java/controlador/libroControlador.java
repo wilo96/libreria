@@ -1,12 +1,13 @@
 package controlador;
 
+import java.util.List;
+
 import javax.annotation.ManagedBean;
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 
 import Datos.librosDAO;
 import modelo.Libro;
-import modelo.Usuario;
 
 @ManagedBean
 public class libroControlador {
@@ -28,9 +29,34 @@ public class libroControlador {
 		this.libro = libro;
 	}
 	
-	public String guardarLibro() {
+	public List<Libro> listado() {
+		return ldao.listarLibro();
+	}
+	
+	public Libro filtrar() {
+		 return ldao.buscar(this.libro.getCodigo());
+	}
+
+	public String guardarUsuario() {
 		System.out.println(libro);
 		ldao.insertar(libro);
+		return null;
+	}
+	
+	public String editarUsuario() {
+		ldao.editar(libro);
+		return null;
+	}
+	
+	public String eliminarUsuario(int codigo) {
+		ldao.eliminar(codigo);
+		return null;
+	}
+	
+	public String Buscar() {
+		Libro l=ldao.buscar(libro.getCodigo());
+		listado();
+		libro=l;
 		return null;
 	}
 }
