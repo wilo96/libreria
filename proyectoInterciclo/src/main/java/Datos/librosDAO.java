@@ -11,6 +11,7 @@ import modelo.Libro;
 
 @Stateless
 public class librosDAO {
+
 	@Inject
 	private EntityManager em;
 	
@@ -29,14 +30,15 @@ public class librosDAO {
 	public Libro buscar(int codigo) {
 		Libro l;
 		l=em.find(Libro.class, codigo);
-		System.out.println();
 		return l;
 	}
 
 	public List<Libro> listarLibro() {
 		String jpql = "SELECT l FROM libros l";
 		Query q = em.createQuery(jpql, Libro.class);
-		List<Libro> libro = q.getResultList(); 
+		List<Libro> libro = q.getResultList();
+		System.out.println("librosssssssssss"+libro.toString());
 		return libro;
 	}
+
 }

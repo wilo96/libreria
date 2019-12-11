@@ -31,14 +31,17 @@
       <li class="nav-item">
         <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
       </li>
-      <li class="nav-item d-none d-sm-inline-block">
-        <a href="blank.xhtml" class="nav-link">Usuarios</a>
+       <li class="nav-item d-none d-sm-inline-block">
+        <a href="editarUsuario.xhtml" class="nav-link">Editar</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="#" class="nav-link">Categorias</a>
+        <a href="EliminarUsuario.xhtml" class="nav-link">Eliminar</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="#" class="nav-link">Productos</a>
+        <a href="listarUsuario.xhtml" class="nav-link">Listar</a>
+      </li>
+      <li class="nav-item d-none d-sm-inline-block">
+        <a href="blank.xhtml" class="nav-link">Atras</a>
       </li>
     </ul>
 
@@ -161,10 +164,6 @@
 		<h:inputText value="#{usuarioControlador.usuario.nombres}" id="nombres"/>
 		<h:message for="nombres"/>
 		
-		<h:outputLabel value="Dirección:" for="direccion"/>
-		<h:inputText value="#{usuarioControlador.usuario.direccion}" id="direccion"/>
-		<h:message for="direccion"/>
-		
 		<h:outputLabel value="Teléfono:" for="telefono"/>
 		<h:inputText value="#{usuarioControlador.usuario.telefono}" id="telefono"/>
 		<h:message for="telefono"/>
@@ -177,6 +176,10 @@
 		<h:inputText value="#{usuarioControlador.usuario.contrasenia}" id="contrasenia"/>
 		<h:message for="contrasenia"/>
 		
+		<h:outputLabel value="Dirección:" for="direccion"/>
+		<h:inputText value="#{usuarioControlador.usuario.direccionDefecto}" id="direccion"/>
+		<h:message for="direccion"/>
+		
 		<h:outputLabel value="Administrador:" for="administrador"/>
 		<h:inputText value="#{usuarioControlador.usuario.administrador}" id="administrador"/>
 		<h:message for="administrador"/>
@@ -184,11 +187,7 @@
 		<h:outputLabel value="Imagen:" for="imagen"/>
 		<h:inputText value="#{usuarioControlador.usuario.imagen}" id="imagen"/>
 		<h:message for="imagen"/>
-		
-		<h:outputLabel value="Ventas:" for="ventas"/>
-		<h:inputText value="#{usuarioControlador.usuario.ventas}" id="ventas"/>
-		<h:message for="ventas"/>
-		
+
 		<h:commandButton action="#{usuarioControlador.guardarUsuario()}" value="Guardar" />
 	</h:panelGrid>
 </h:form>

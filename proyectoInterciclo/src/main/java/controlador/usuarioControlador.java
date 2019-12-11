@@ -8,8 +8,9 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.inject.Inject;
 
+import Datos.direccionesDAO;
 import Datos.usuariosDAO;
-
+import modelo.Direccion;
 import modelo.Usuario;
 
 @ManagedBean
@@ -17,10 +18,14 @@ import modelo.Usuario;
 public class usuarioControlador {
 	
 	private Usuario usuario;
+	private Direccion dir;
 	private List<Usuario> listaU;
 	
 	@Inject
 	private usuariosDAO udao;
+	
+	@Inject
+	private direccionesDAO ddao;
 	
 	@PostConstruct
 	public void init() {
@@ -49,23 +54,25 @@ public class usuarioControlador {
 	}
 	
 	public Usuario filtrar() {
-		 return udao.buscar(this.usuario.getCedula());
+		return udao.buscar(this.usuario.getCedula());
 	}
 
 	public String guardarUsuario() {
 		System.out.println(usuario);
+		//System.out.println(usuario.getCedula());
 		udao.insertar(usuario);
-		return null;
+		//ddao.insertar(dir);
+		return "blank.xhtml";
 	}
 	
 	public String editarUsuario() {
 		udao.editar(usuario);
-		return null;
+		return "blank.xhtml";
 	}
 	
 	public String eliminarUsuario(String cedula) {
 		udao.eliminar(cedula);
-		return null;
+		return "blank.xhtml";
 	}
 	
 	public String Buscar() {

@@ -1,10 +1,17 @@
 package modelo;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 import org.hibernate.validator.constraints.NotEmpty;
@@ -13,17 +20,19 @@ import org.hibernate.validator.constraints.NotEmpty;
 @Table(name="categorias")
 public class Categoria {
 	
-	@Id
+	@Id 
 	@Column(name="codigo")
-	@GeneratedValue(strategy=GenerationType.AUTO )
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int codigo;
 	
 	@NotEmpty
 	@Column(name="descripcion")
 	private String descripcion;
 	
-	@Column(name="imagen")
-	private String imagen;
+	
+	@OneToMany(cascade = {CascadeType.ALL}, fetch = FetchType.EAGER)
+	@JoinColumn(name = "id_cat_fk", referencedColumnName = "codigo")
+	private List<Libro> libro;
 	
 	public int getCodigo() {
 		return codigo;
@@ -37,14 +46,19 @@ public class Categoria {
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
-	public String getImagen() {
-		return imagen;
+	public List<Libro> getLibro() {
+		return libro;
 	}
-	public void setImagen(String imagen) {
-		this.imagen = imagen;
+	public void setLibro(List<Libro> libro) {
+		this.libro = libro;
 	}
 	@Override
 	public String toString() {
-		return "categorias [codigo=" + codigo + ", descripcion=" + descripcion + ", imagen=" + imagen + "]";
+		return "Categoria [codigo=" + codigo + ", descripcion=" + descripcion + "]";
 	}
+	
+	
+
+	
+	
 }

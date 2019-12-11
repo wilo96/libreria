@@ -31,17 +31,17 @@
       <li class="nav-item">
         <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
       </li>
-      <li class="nav-item d-none d-sm-inline-block">
-        <a href="editarCategorias.xhtml" class="nav-link">Editar</a>
+       <li class="nav-item d-none d-sm-inline-block">
+        <a href="editarLibro.xhtml" class="nav-link">Editar</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="#" class="nav-link">Eliminar</a>
+        <a href="" class="nav-link">Eliminar</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="buscarCategoria.xhtml" class="nav-link">Buscar</a>
+        <a href="buscarLibro.xhtml" class="nav-link">Buscar</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="listarCategoria.xhtml" class="nav-link">Listar</a>
+        <a href="listarLibro.xhtml" class="nav-link">Listar</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
         <a href="blank.xhtml" class="nav-link">Atras</a>
@@ -155,17 +155,55 @@
     </section>
 
     <!-- Main content -->
-<h1>Crear Categoria</h1>
-
+<h1>Listar Libro</h1>
 <h:form>
-	<h:panelGrid columns="3">
-		
-		<h:outputLabel value="Descripción:" for="descripcion"/>
-		<h:inputText value="#{categoriaControlador.categoria.descripcion}" id="descripcion"/>
-		<h:message for="descripcion"/>
-		
-		<h:commandButton action="#{categoriaControlador.guardarCategoria()}" value="Guardar" />
-	</h:panelGrid>
+<div>
+
+<h:commandButton action="#{libroControlador.listado()}" value="Listar" />
+</div>
+<div>
+		<h:dataTable value="#{libroControlador.listado()}" var="libro">
+			<h:column>
+				<f:facet name="header">Codigo</f:facet>
+				#{libro.codigo}
+			</h:column>
+			<h:column>
+				<f:facet name="header">Titulo</f:facet>
+				#{libro.titulo}
+			</h:column>
+			<h:column>
+				<f:facet name="header">Autor</f:facet>
+				#{libro.autor}
+			</h:column>
+			<h:column>
+				<f:facet name="header">Editorial</f:facet>
+				#{libro.editorial}
+			</h:column>
+			<h:column>
+				<f:facet name="header">Año publicación</f:facet>
+				#{libro.aniopublicacion}
+			</h:column>
+			<h:column>
+				<f:facet name="header">Id Categoria</f:facet>
+				#{libro.id_cat_fk}
+			</h:column>
+			<h:column>
+				<f:facet name="header">Precio</f:facet>
+				#{libro.precio}
+			</h:column>
+			<h:column>
+				<f:facet name="header">Descuento</f:facet>
+				#{libro.descuento}
+			</h:column>
+			<h:column>
+				<f:facet name="header">Stock</f:facet>
+				#{libro.stock}
+			</h:column>
+			<h:column>
+				<h:commandButton action="#{libroControlador.eliminarLibro(libro.codigo)}" value="Eliminar" />
+			</h:column>
+		</h:dataTable>
+	</div>
 </h:form>
 <!-- /.content -->
   </div>

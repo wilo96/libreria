@@ -8,11 +8,12 @@ import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
+import modelo.Libro;
 import modelo.Usuario;
 
 @Stateless
 public class usuariosDAO {
-	
+	 
 	@Inject
 	private EntityManager em;
 	
@@ -35,9 +36,10 @@ public class usuariosDAO {
 	}
 
 	public List<Usuario> listarUsuario() {
-		String jpql = "SELECT u FROM usuairos u";
+		String jpql = "SELECT u FROM usuarios u";
 		Query q = em.createQuery(jpql, Usuario.class);
-		List<Usuario> usuario = q.getResultList(); 
+		List<Usuario> usuario = q.getResultList();
+		System.out.println("usuariosssssssssss"+usuario.toString());
 		return usuario;
 	}
 

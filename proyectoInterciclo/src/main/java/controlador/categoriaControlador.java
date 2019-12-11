@@ -16,7 +16,7 @@ import modelo.Categoria;
 public class categoriaControlador {
 	private Categoria categoria;
 	private List<Categoria> listaCa;
-	
+	 
 	@Inject
 	private categoriasDAO cdao;
 	
@@ -53,24 +53,24 @@ public class categoriaControlador {
 	public String guardarCategoria() {
 		System.out.println(categoria);
 		cdao.insertar(categoria);
-		return null;
+		return "blank.xhtml";
 	}
 	
 	public String editarCategoria() {
 		cdao.editar(categoria);
-		return null;
+		return "blank.xhtml";
 	}
 	
 	public String eliminarCategoria(int codigo) {
 		cdao.eliminar(codigo);
-		return null;
+		return "blank.xhtml";
 	}
 	
 	public String Buscar() {
 		Categoria c=cdao.buscar(categoria.getCodigo());
 		listado();
 		categoria=c;
-		return null;
+		return "blank";
 	}
 
 }
