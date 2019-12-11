@@ -10,6 +10,9 @@
 
 <h:form>
 	<h:panelGrid columns="3">
+		<h:outputLabel value="Codigo:" for="descripcion"/>
+		<h:inputText value="#{categoriaControlador.categoria.descripcion}" id="descripcion"/>
+		<h:message for="descripcion"/>
 		<h:outputLabel value="Descripción:" for="descripcion"/>
 		<h:inputText value="#{categoriaControlador.categoria.descripcion}" id="descripcion"/>
 		<h:message for="descripcion"/>
