@@ -17,7 +17,12 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity(name="tarjetas")
 @Table(name="tarjetas")
+<<<<<<< Upstream, based on branch 'master' of https://github.com/wilo96/libreria.git
 public class Tarjeta {
+=======
+public class Tarjeta {
+	 
+>>>>>>> 2f25540 Actualizacion de Clases
 	@Id
 	@Column(name="codigo")
 	@GeneratedValue(strategy=GenerationType.AUTO )

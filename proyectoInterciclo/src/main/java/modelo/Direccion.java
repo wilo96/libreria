@@ -17,8 +17,14 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity(name="direcciones")
 @Table(name="direcciones")
+<<<<<<< Upstream, based on branch 'master' of https://github.com/wilo96/libreria.git
 public class Direccion {
 	@Id
+=======
+public class Direccion {
+	
+	@Id 
+>>>>>>> 2f25540 Actualizacion de Clases
 	@Column(name="codigo")
 	@GeneratedValue(strategy=GenerationType.AUTO )
 	private int codigo;

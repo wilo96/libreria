@@ -70,9 +70,13 @@ public class usuarioControlador {
 	}
 	
 	public Usuario filtrar() {
+<<<<<<< Upstream, based on branch 'master' of https://github.com/wilo96/libreria.git
 		System.out.println("filtrar "+this.campoCedula);
 		this.usuario=udao.buscar(this.usuario.getCedula());
 		 return udao.buscar(this.usuario.getCedula());
+=======
+		return this.usuario=udao.buscar(this.usuario.getCedula());
+>>>>>>> 2f25540 Actualizacion de Clases
 	}
 
 	public String guardarUsuario() {

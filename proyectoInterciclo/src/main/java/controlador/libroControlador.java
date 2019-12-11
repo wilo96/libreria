@@ -46,6 +46,16 @@ public class libroControlador {
 	}
 
 	
+	public String guardarLibro() {
+		System.out.println(libro);
+		ldao.insertar(libro);
+		return null;
+	}
+	/*
+	public Libro filtrar() {
+		this.libro=ldao.buscar(this.libro.getCodigo());
+		 return ldao.buscar(this.libro.getCodigo());
+	}*/
 	public Libro filtrar() {
 		 return ldao.buscar(this.libro.getCodigo());
 	}
