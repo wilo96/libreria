@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+<h:head></h:head> 
+<body> 
+<h1>Listar Categorias</h1>
+<h:form>
+
+<h:commandButton action="#{categoriaControlador.listado()}" value="Listar" />
+
+
+
+		<h:dataTable value="#{categoriaControlador.listado()}" var="categoria">
+			<h:column>
+				<f:facet name="header">Código</f:facet>
+				#{categoria.codigo}
+			</h:column>
+			<h:column>
+				<f:facet name="header">Descripción</f:facet>
+				#{categoria.descripcion}
+			</h:column>
+			<h:column>
+				<f:facet name="header">Imagen</f:facet>
+				#{categoria.imagen}
+			</h:column>
+			
+			<h:column>
+				<h:commandButton action="#{categoriaControlador.eliminarCategoria(categoria.codigo)}" value="Eliminar" />
+			</h:column>
+		</h:dataTable>
+	
+</h:form>
+</body> 
+</html>

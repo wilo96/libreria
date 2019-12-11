@@ -9,7 +9,7 @@ import javax.persistence.Table;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
-@Entity
+@Entity(name="categorias")
 @Table(name="categorias")
 public class Categoria {
 	

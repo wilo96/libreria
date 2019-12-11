@@ -1,8 +1,13 @@
 package Datos;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
+
 import modelo.Usuario;
 
 @Stateless
@@ -20,11 +25,20 @@ public class usuariosDAO {
 	}
 	
 	public void eliminar(String cedula) {
-		em.remove(leer(cedula));
+		em.remove(buscar(cedula));
 	}
 	
-	public Usuario leer(String cedula) {
-		em.find(Usuario.class, cedula);
-		return null;
+	public Usuario buscar(String cedula) {
+		Usuario u;
+		u=em.find(Usuario.class, cedula);
+		return u;
 	}
+
+	public List<Usuario> listarUsuario() {
+		String jpql = "SELECT u FROM usuairos u";
+		Query q = em.createQuery(jpql, Usuario.class);
+		List<Usuario> usuario = q.getResultList(); 
+		return usuario;
+	}
+
 }

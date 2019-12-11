@@ -1,14 +1,14 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
-	<ui:composition template="blank.xhtml" xmlns="http://www.w3.org/1999/xhtml"
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:h="http://java.sun.com/jsf/html"
-			>
-	<ui:define name="titulo">Insertar Usuarios</ui:define>
-	<ui:define name="contenido">
-	
-	<h:form>
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+<h:head></h:head> 
+<body> 
+<h1>Modificar Usuario</h1>
+
+<h:form>
 	<h:panelGrid columns="3">
 		<h:outputLabel value="Cédula:" for="cedula"/>
 		<h:inputText value="#{usuarioControlador.usuario.cedula}" id="cedula"/>
@@ -46,11 +46,8 @@
 		<h:inputText value="#{usuarioControlador.usuario.ventas}" id="ventas"/>
 		<h:message for="ventas"/>
 		
-		<h:commandButton action="#{usuarioControlador.guardarUsuario()}" value="Guardar" />
+		<h:commandButton action="#{usuarioControlador.editarUsuario()}" value="Editar" />
 	</h:panelGrid>
 </h:form>
-	
-	
-	
-	</ui:define>
-	</ui:composition>
+</body> 
+</html>
