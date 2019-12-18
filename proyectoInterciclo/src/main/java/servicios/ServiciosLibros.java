@@ -21,7 +21,8 @@ public class ServiciosLibros {
 	private categoriaControlador cc;
 	
 	@Inject
-	private libroControlador lic;
+	private libroControlador lc;
+
 	
 	@GET
 	@Path("consultar")
@@ -40,7 +41,7 @@ public class ServiciosLibros {
 		{
 		r.setCodigo(0);
 		r.setMensaje("Libro Insertado");
-		lic.nuevoLibro(libro);
+		lc.nuevoLibro(libro);
 		}catch(Exception e)
 		{
 			r.setCodigo(99);
@@ -49,9 +50,6 @@ public class ServiciosLibros {
 		return r;
 	}
 
-	@Inject
-	private libroControlador lc;
-	
 	@GET
 	@Path("listLibros")
 	@Produces("application/json")

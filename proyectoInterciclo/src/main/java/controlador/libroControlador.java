@@ -48,6 +48,7 @@ public class libroControlador {
 
 	
 	public String nuevoLibro(Libro libros) {
+		System.out.println(libros);
 		ldao.insertar(libros);
 		return null;
 	}
