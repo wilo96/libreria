@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
+<<<<<<< Upstream, based on branch 'master' of https://github.com/wilo96/libreria.git
+<<<<<<< Upstream, based on branch 'master' of https://github.com/wilo96/libreria.git
 	<name>poyectofin</name>
+=======
+=======
+<<<<<<< HEAD
+>>>>>>> 8705e60 otro
+	<name>libreria</name>
+<<<<<<< Upstream, based on branch 'master' of https://github.com/wilo96/libreria.git
+>>>>>>> 216ae30 Actualizacion de tablas y cruds de libro y categoria
+=======
+=======
+	<name>poyectofin</name>
+>>>>>>> branch 'master' of https://github.com/wilo96/libreria.git
+>>>>>>> 8705e60 otro
 	<comment></comment>
 	<projects>
 	</projects>

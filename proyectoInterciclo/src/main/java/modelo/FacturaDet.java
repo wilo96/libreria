@@ -12,7 +12,6 @@ import org.hibernate.validator.constraints.NotEmpty;
 @Entity(name="FacturaDets")
 @Table(name="FacturaDets")
 public class FacturaDet {
-	
 	@Id
 	@Column(name = "codigo")
 	@GeneratedValue(strategy=GenerationType.AUTO )

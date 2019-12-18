@@ -38,11 +38,11 @@ public class Usuario {
 		@NotEmpty
 		@Column(name="contrasenia")
 		private String contrasenia;
-		
+		/*
 		@OneToMany(cascade = {CascadeType.ALL}, fetch = FetchType.EAGER)
 		@JoinColumn(name = "id_gustausu_fk", referencedColumnName = "cedula")
 		private List<Like> gusta;
-		
+		*/
 		@Column(name="administrador")
 		private String administrador;
 		
@@ -51,12 +51,11 @@ public class Usuario {
 		
 		@Column(name="direccionDefecto")
 		private String direccionDefecto;		
-		
+		/*
 		@OneToMany(cascade = {CascadeType.ALL}, fetch = FetchType.LAZY)
 		@JoinColumn(name = "id_usu_fk", referencedColumnName = "cedula")
 		private List<Direccion> direccion;
 		
-
 		@OneToMany(cascade = {CascadeType.ALL}, fetch = FetchType.LAZY)
 		@JoinColumn(name = "id_usuta_fk", referencedColumnName = "cedula")
 		private List<Tarjeta> tarjeta;
@@ -64,8 +63,8 @@ public class Usuario {
 		@OneToMany(cascade = {CascadeType.ALL}, fetch = FetchType.LAZY)
 		@JoinColumn(name = "id_usufc_fk", referencedColumnName = "cedula")
 		private List<FacturaCab> facturacab;
-		
-		
+*/
+
 		public String getCedula() {
 			return cedula;
 		}
@@ -109,7 +108,7 @@ public class Usuario {
 		public void setImagen(String imagen) {
 			this.imagen = imagen;
 		}	
-		
+		/*
 		
 		public List<Direccion> getDireccion() {
 			return direccion;
@@ -117,12 +116,7 @@ public class Usuario {
 		public void setDireccion(List<Direccion> direccion) {
 			this.direccion = direccion;
 		}
-		public List<Like> getGusta() {
-			return gusta;
-		}
-		public void setGusta(List<Like> gusta) {
-			this.gusta = gusta;
-		}
+		
 		
 		public List<Tarjeta> getTarjeta() {
 			return tarjeta;
@@ -136,19 +130,24 @@ public class Usuario {
 		public void setFacturacab(List<FacturaCab> facturacab) {
 			this.facturacab = facturacab;
 		}
-		 
+		 */
 		public String getDireccionDefecto() {
 			return direccionDefecto;
 		}
 		public void setDireccionDefecto(String direccionDefecto) {
 			this.direccionDefecto = direccionDefecto;
 		}
+
 		@Override
 		public String toString() {
 			return "Usuario [cedula=" + cedula + ", nombres=" + nombres + ", telefono=" + telefono + ", correo="
 					+ correo + ", contrasenia=" + contrasenia + ", administrador=" + administrador + ", imagen="
 					+ imagen + ", direccionDefecto=" + direccionDefecto + "]";
 		}
+		/*
+		public void setGusta(List<Like> gusta) {
+			this.gusta = gusta;
+		}
 
-		
+		*/
 }

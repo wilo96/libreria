@@ -4,6 +4,11 @@
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:h="http://java.sun.com/jsf/html"> 
 
+
+<h:head></h:head> 
+
+
+
 <head>
   <meta charset="utf-8"/>
   <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -155,6 +160,7 @@
     </section>
 
     <!-- Main content -->
+
 <h1>Modificar Categoria</h1>
 
 <h:form>
@@ -162,10 +168,15 @@
 		<h:outputLabel value="Codigo:" for="codigo"/>
 		<h:inputText value="#{categoriaControlador.categoria.codigo}" id="codigo"/>
 		<h:message for="codigo"/>
+
+		<h:outputLabel value="Codigo:" for="codigo"/>
+		<h:inputText value="#{categoriaControlador.categoria.codigo}" id="codigo"/>
+		<h:message for="codigo"/>
 		<h:outputLabel value="Descripción:" for="descripcion"/>
 		<h:inputText value="#{categoriaControlador.categoria.descripcion}" id="descripcion"/>
 		<h:message for="descripcion"/>
-		
+		<h:commandButton action="#{categoriaControlador.editarCategoria()}" value="Editar" />
+		<h:commandButton action="#{categoriaControlador.editarCategoria()}" value="Guardar" />
 		<h:commandButton action="#{categoriaControlador.editarCategoria()}" value="Editar" />
 	</h:panelGrid>
 </h:form>

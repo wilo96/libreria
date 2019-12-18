@@ -28,7 +28,11 @@
       <jta-data-source>java:jboss/datasources/tiendaDS</jta-data-source>
       <properties>
          <!-- Properties for Hibernate -->
+<<<<<<< HEAD
          <property name="hibernate.hbm2ddl.auto" value="none"/>
+=======
+         <property name="hibernate.hbm2ddl.auto" value="none" />
+>>>>>>> branch 'master' of https://github.com/wilo96/libreria.git
          <property name="hibernate.show_sql" value="true" />
       </properties>
    </persistence-unit>

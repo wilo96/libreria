@@ -18,7 +18,7 @@ import modelo.Libro;
 public class ServiciosLibros {
 	
 	@Inject
-	private categoriaControlador lc;
+	private categoriaControlador cc;
 	
 	@Inject
 	private libroControlador lic;
@@ -27,7 +27,7 @@ public class ServiciosLibros {
 	@Path("consultar")
 	@Produces("application/json")
 	public  List<Categoria> getCategorias(){
-		return lc.listado();
+		return cc.listado();
 	}
 	
 	@POST
@@ -48,5 +48,16 @@ public class ServiciosLibros {
 		}
 		return r;
 	}
+
+	@Inject
+	private libroControlador lc;
+	
+	@GET
+	@Path("listLibros")
+	@Produces("application/json")
+	public List<Libro> getLibros(){
+		return lc.listado();
+	}
+	
 	
 }
