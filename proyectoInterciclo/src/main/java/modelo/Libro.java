@@ -58,7 +58,7 @@ public class Libro {
 	@Column(name="imagen")	
 	private String imagen;
 	
-	@OneToMany(cascade = {CascadeType.ALL}, fetch = FetchType.EAGER)
+	/*@OneToMany(cascade = {CascadeType.ALL}, fetch = FetchType.EAGER)
 	@JoinColumn(name = "id_lib_fk", referencedColumnName = "codigo")
 	private List<Like> likes;
 	
@@ -68,8 +68,8 @@ public class Libro {
 	
 	@OneToMany(cascade = {CascadeType.ALL}, fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_facd_fk", referencedColumnName = "codigo")
-	private List<FacturaDet> facdet;
-
+	private List<FacturaDet> facdet;*/
+	
 	public int getCodigo() {
 		return codigo;
 	}
@@ -135,7 +135,7 @@ public class Libro {
 	public void setImagen(String imagen) {
 		this.imagen = imagen;
 	}
-
+/*
 	public List<Like> getLikes() {
 		return likes;
 	}
@@ -159,7 +159,7 @@ public class Libro {
 	public void setFacdet(List<FacturaDet> facdet) {
 		this.facdet = facdet;
 	}
-
+*/
 	public int getAniopublicacion() {
 		return aniopublicacion;
 	}

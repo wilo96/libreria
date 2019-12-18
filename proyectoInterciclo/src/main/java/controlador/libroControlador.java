@@ -44,6 +44,11 @@ public class libroControlador {
 		ldao.insertar(libro);
 		return null;
 	}
+	
+	public String nuevoLibro(Libro libros) {
+		ldao.insertar(libros);
+		return null;
+	}
 
 	public Libro filtrar() {
 		System.out.println("dao "+this.libro.getCodigo());
