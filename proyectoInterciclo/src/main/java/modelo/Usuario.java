@@ -56,18 +56,6 @@ public class Usuario {
 		@JoinColumn(name = "id_usu_fk", referencedColumnName = "cedula")
 		private List<Direccion> direccion;
 		
-
-		@OneToMany(cascade = {CascadeType.ALL}, fetch = FetchType.LAZY)
-		@JoinColumn(name = "id_usuta_fk", referencedColumnName = "cedula")
-		private List<Tarjeta> tarjeta;
-		@Column(name="direccionDefecto")
-		private String direccionDefecto;		
-		
-		@OneToMany(cascade = {CascadeType.ALL}, fetch = FetchType.LAZY)
-		@JoinColumn(name = "id_usu_fk", referencedColumnName = "cedula")
-		private List<Direccion> direccion;
-		
-
 		@OneToMany(cascade = {CascadeType.ALL}, fetch = FetchType.LAZY)
 		@JoinColumn(name = "id_usuta_fk", referencedColumnName = "cedula")
 		private List<Tarjeta> tarjeta;
@@ -75,11 +63,7 @@ public class Usuario {
 		@OneToMany(cascade = {CascadeType.ALL}, fetch = FetchType.LAZY)
 		@JoinColumn(name = "id_usufc_fk", referencedColumnName = "cedula")
 		private List<FacturaCab> facturacab;
-		
-		
-		@OneToMany(cascade = {CascadeType.ALL}, fetch = FetchType.LAZY)
-		@JoinColumn(name = "id_usufc_fk", referencedColumnName = "cedula")
-		private List<FacturaCab> facturacab;
+
 
 		public String getCedula() {
 			return cedula;
@@ -159,12 +143,9 @@ public class Usuario {
 			return "Usuario [cedula=" + cedula + ", nombres=" + nombres + ", telefono=" + telefono + ", correo="
 					+ correo + ", contrasenia=" + contrasenia + ", administrador=" + administrador + ", imagen="
 					+ imagen + ", direccionDefecto=" + direccionDefecto + "]";
-<<<<<<< Upstream, based on branch 'master' of https://github.com/wilo96/libreria.git
 		}
 		public void setGusta(List<Like> gusta) {
 			this.gusta = gusta;
-=======
->>>>>>> 48f9c36 litar
 		}
 
 		

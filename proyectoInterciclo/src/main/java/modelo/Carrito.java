@@ -12,11 +12,9 @@ import org.hibernate.validator.constraints.NotEmpty;
 @Entity(name="carritos")
 @Table(name="carritos")
 public class Carrito {
-<<<<<<< Upstream, based on branch 'master' of https://github.com/wilo96/libreria.git
-=======
+
 	
 	
->>>>>>> 2f25540 Actualizacion de Clases
 	@Id
 	@Column(name="codigo")
 	@GeneratedValue(strategy=GenerationType.AUTO )

@@ -16,12 +16,7 @@ import javax.persistence.Table;
 @Entity(name="FacturaCabs")
 @Table(name="FacturaCabs")
 public class FacturaCab {
-<<<<<<< Upstream, based on branch 'master' of https://github.com/wilo96/libreria.git
 
-=======
-	
-	
->>>>>>> 2f25540 Actualizacion de Clases
 	@Id
 	@Column(name = "codigo")
 	@GeneratedValue(strategy=GenerationType.AUTO )

@@ -38,14 +38,7 @@ public class libroControlador {
 	public List<Libro> listado() {
 		return ldao.listarLibro();
 	}
-	
-	public String guardarLibro() {
-		System.out.println(libro);
-		ldao.insertar(libro);
-		return null;
-	}
 
-<<<<<<< Upstream, based on branch 'master' of https://github.com/wilo96/libreria.git
 	
 	public String guardarLibro() {
 		System.out.println(libro);
@@ -53,10 +46,11 @@ public class libroControlador {
 		return null;
 	}
 	/*
-=======
->>>>>>> 48f9c36 litar
 	public Libro filtrar() {
-		System.out.println("dao "+this.libro.getCodigo());
+		this.libro=ldao.buscar(this.libro.getCodigo());
+		 return ldao.buscar(this.libro.getCodigo());
+	}*/
+	public Libro filtrar() {
 		 return ldao.buscar(this.libro.getCodigo());
 	}
 

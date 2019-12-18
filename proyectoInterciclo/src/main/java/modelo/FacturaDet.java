@@ -12,11 +12,6 @@ import org.hibernate.validator.constraints.NotEmpty;
 @Entity(name="FacturaDets")
 @Table(name="FacturaDets")
 public class FacturaDet {
-<<<<<<< Upstream, based on branch 'master' of https://github.com/wilo96/libreria.git
-
-=======
-	
->>>>>>> 2f25540 Actualizacion de Clases
 	@Id
 	@Column(name = "codigo")
 	@GeneratedValue(strategy=GenerationType.AUTO )
