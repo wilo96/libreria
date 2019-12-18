@@ -73,17 +73,17 @@ public class usuarioControlador {
 		System.out.println(usuario);
 		udao.insertar(usuario);
 		//ddao.insertar(dir);
-		return "blank.xhtml";
+		return null;
 	}
 	
 	public String editarUsuario() {
 		udao.editar(usuario);
-		return "blank.xhtml";
+		return null;
 	}
 	
 	public String eliminarUsuario(String cedula) {
 		udao.eliminar(cedula);
-		return "blank.xhtml";
+		return null;
 	}
 	
 	public String Buscar() {

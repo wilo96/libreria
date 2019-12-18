@@ -192,7 +192,10 @@
 			</h:column>
 			<h:column>
 				<f:facet name="header">Imagen</f:facet>
-				#{usuario.imagen}
+				<div class="image">
+          		<img src="#{usuario.imagen}" class="img-circle elevation-2" alt="User Image"/>
+        		</div>
+				
 			</h:column>
 			<h:column>
 				<f:facet name="header">Dirección</f:facet>
