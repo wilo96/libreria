@@ -79,6 +79,12 @@ public class usuarioControlador {
 		return null;
 	}
 	
+	public String guardarUsuarioServicio(Usuario usuarioo) {
+		System.out.println(usuarioo);
+		udao.insertar(usuarioo);
+		return null;
+	}
+	
 	public String editarUsuario() {
 		udao.editar(usuario);
 		return null;
@@ -95,5 +101,6 @@ public class usuarioControlador {
 		usuario=u;
 		return null;
 	}
-
+	
+	
 }

@@ -16,9 +16,11 @@ public class ServiciosLibros {
 	private libroControlador lc;
 	
 	@GET
-	@Path("consultar")
+	@Path("listLibros")
 	@Produces("application/json")
 	public List<Libro> getLibros(){
-		return (List<Libro>) lc.getLibro();
+		return lc.listado();
 	}
+	
+	
 }
