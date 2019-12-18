@@ -69,9 +69,14 @@ public class usuarioControlador {
 		System.out.println("filtrar "+this.campoCedula);
 		this.usuario=udao.buscar(this.usuario.getCedula());
 		 return udao.buscar(this.usuario.getCedula());
-		
 	}
 
+	public Usuario usuarioServicio(String cedula) {
+		System.out.println("filtrar "+cedula);
+		this.usuario=udao.buscar(cedula);
+		 return udao.buscar(cedula);
+	}	
+	
 	public String guardarUsuario() {
 		System.out.println(usuario);
 		udao.insertar(usuario);
