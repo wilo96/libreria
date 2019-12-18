@@ -157,6 +157,7 @@
     <!-- Main content -->
 
 <h1>Buscar Usuario</h1>
+<<<<<<< Upstream, based on branch 'master' of https://github.com/wilo96/libreria.git
 <h:form>
 <div>
 	<h:outputLabel value="Cedula"></h:outputLabel>
@@ -212,6 +213,9 @@
 
 
 =======
+=======
+<h:form>
+>>>>>>> 8705e60 otro
 	<div>
 		<h:outputLabel value="Cedula" for="cedula"/>
 		<h:inputText value="#{usuarioControlador.campoCedula}" id="cedula"/>
@@ -259,7 +263,65 @@
 			</h:column>
 		</h:dataTable>
 	</div>
+<<<<<<< Upstream, based on branch 'master' of https://github.com/wilo96/libreria.git
 >>>>>>> 216ae30 Actualizacion de tablas y cruds de libro y categoria
+=======
+=======
+<div>
+	<h:outputLabel value="Cedula"></h:outputLabel>
+	<h:inputText value="#{usuarioControlador.usuario.cedula}" id="cedula" />
+	<h:message for="cedula"/>
+	<h:commandButton action="#{usuarioControlador.Buscar()}" value="Buscar" />
+
+</div>
+<div>
+	<h:dataTable value="#{usuarioControlador.usuario}" var="usuario">
+	<h:column>
+		<f:facet name="header">Cedula</f:facet>
+		#{usuario.cedula}
+	</h:column>
+	<h:column>
+		<f:facet name="header">Nombres</f:facet>
+		#{usuario.nombres}
+	</h:column>
+	<h:column>
+		<f:facet name="header">Telefono</f:facet>
+		#{usuario.telefono}
+	</h:column>
+	<h:column>
+		<f:facet name="header">Correo</f:facet>
+		#{usuario.correo}
+	</h:column>
+	<h:column>
+		<f:facet name="header">Contraseña</f:facet>
+		#{usuario.contrasenia}
+	</h:column>
+	<h:column>
+		<f:facet name="header">Direccion</f:facet>
+		#{usuario.direccionDefecto}
+	</h:column>
+	<h:column>
+		<f:facet name="header">Imagen</f:facet>
+		<div class="image">
+          		<img src="#{usuario.imagen}" class="img-circle elevation-2" alt="User Image"/>
+        		</div>
+		
+	</h:column>
+	<h:column>
+		<f:facet name="header">Administrador</f:facet>
+		#{usuario.administrador}
+	</h:column>
+	<h:column>
+		<h:commandButton action="#{usuarioControlador.eliminarUsuario(usuario.cedula)}" value="Eliminar" />
+	</h:column>
+	</h:dataTable>
+ <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+
+
+>>>>>>> branch 'master' of https://github.com/wilo96/libreria.git
+>>>>>>> 8705e60 otro
 </h:form>
 </div>
 
