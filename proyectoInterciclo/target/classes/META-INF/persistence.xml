@@ -28,8 +28,12 @@
       <jta-data-source>java:jboss/datasources/tiendaDS</jta-data-source>
       <properties>
          <!-- Properties for Hibernate -->
+<<<<<<< Upstream, based on branch 'master' of https://github.com/wilo96/libreria.git
          <property name="hibernate.hbm2ddl.auto" value="create"/>
          <property name="hibernate.hbm2ddl.auto" value="create-drop" />
+=======
+         <property name="hibernate.hbm2ddl.auto" value="create" />
+>>>>>>> a59b880 proyecto
          <property name="hibernate.show_sql" value="true" />
       </properties>
    </persistence-unit>
