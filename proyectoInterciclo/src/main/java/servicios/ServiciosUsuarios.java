@@ -16,26 +16,33 @@ import modelo.Usuario;
 public class ServiciosUsuarios {
 	@Inject
 	private usuarioControlador uc;
-	
+	/*
 	@GET
-	@Path("listUsuarios")
+	@Path("/listUsuarios")
 	@Produces("application/json")
 	public List<Usuario> getUsuarios(){
 		return uc.listado();
 	}
 	
 	@POST
-	@Path("logging")
+	@Path("/logging")
 	@Produces("application/json")
 	@Consumes("application/json")
 	public respuestaLogging logging(Usuario usuario) {
 		respuestaLogging r=new respuestaLogging();
 		try {
-			//Usuario u=uc.buscar(usuario.getCedula());
-			return null;
+			Usuario u=uc.usuarioServicio(usuario.getCedula());
+			if(usuario.getContrasenia().equals(u.getContrasenia())) {
+				r.setId(1);
+				r.setRespuesta("Se a logueado correctamente");
+			}else {
+				r.setId(2);
+				r.setRespuesta("Contraseña incorrecta");
+			}
 		} catch (Exception e) {
-			// TODO: handle exception
-			return null;
+			r.setId(3);
+			r.setRespuesta("Error ocurrido en el logging");
 		}
-	}
+		return r;
+	}*/
 }
