@@ -11,11 +11,8 @@ import javax.ws.rs.Produces;
 
 import controlador.categoriaControlador;
 import controlador.libroControlador;
-<<<<<<< HEAD
 import modelo.Categoria;
-=======
 import controlador.usuarioControlador;
->>>>>>> branch 'master' of https://github.com/wilo96/libreria.git
 import modelo.Libro;
 import modelo.Usuario;
 
@@ -27,15 +24,11 @@ public class ServiciosLibros {
 	
 	@Inject
 	private libroControlador lc;
-<<<<<<< HEAD
 
-=======
 	@Inject
 	private usuarioControlador uc;
->>>>>>> branch 'master' of https://github.com/wilo96/libreria.git
-	
+
 	@GET
-<<<<<<< HEAD
 	@Path("consultar")
 	@Produces("application/json")
 	public  List<Categoria> getCategorias(){
@@ -62,10 +55,7 @@ public class ServiciosLibros {
 	}
 
 	@GET
-	@Path("listLibros")
-=======
 	@Path("/listLibros")
->>>>>>> branch 'master' of https://github.com/wilo96/libreria.git
 	@Produces("application/json")
 	public List<Libro> getLibros(){
 		return lc.listado();
