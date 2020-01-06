@@ -61,22 +61,5 @@ public class LibroServSoap {
 		return uc.listado();
 	}
 	
-	@WebMethod
-	public respuestaLogging logging(Usuario usuario) {
-		respuestaLogging r=new respuestaLogging();
-		try {
-			Usuario u=uc.usuarioServicio(usuario.getCedula());
-			if(usuario.getContrasenia().equals(u.getContrasenia())) {
-				r.setId(1);
-				r.setRespuesta("Se a logueado correctamente");
-			}else {
-				r.setId(2);
-				r.setRespuesta("Contraseña incorrecta");
-			}
-		} catch (Exception e) {
-			r.setId(3);
-			r.setRespuesta("Error ocurrido en el logging");
-		}
-		return r;
-	}
+	
 }
