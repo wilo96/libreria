@@ -8,8 +8,8 @@ import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
-import modelo.Libro;
-import modelo.Usuario;
+import modelo.Libros;
+import modelo.Usuarios;
 
 @Stateless
 public class usuariosDAO {
@@ -17,11 +17,11 @@ public class usuariosDAO {
 	@Inject
 	private EntityManager em;
 	
-	public void insertar(Usuario usuario) {
+	public void insertar(Usuarios usuario) {
 		em.persist(usuario);
 	}
 	
-	public void editar(Usuario usuario) {
+	public void editar(Usuarios usuario) {
 		em.merge(usuario);
 	}
 	
@@ -29,18 +29,24 @@ public class usuariosDAO {
 		em.remove(buscar(cedula));
 	}
 	
-	public Usuario buscar(String cedula) {
-		System.out.println("dao "+cedula);
-		Usuario u;
-		u=em.find(Usuario.class, cedula);
+	public Usuarios buscar(String cedula) {
+		Usuarios u;
+		u=em.find(Usuarios.class, cedula);
 		System.out.println();
 		return u;
 	}
+	public List<Usuarios> loginbus(String correo, String contra) {
+		System.out.println("dao "+correo);
+		String sql = "SELECT u FROM Usuarios u where u.correo = '"+correo+"' and u.contrasenia='"+contra+"'";
+		Query q = em.createQuery(sql,Usuarios.class);
+		List<Usuarios> login = q.getResultList();
+		return login;
+	}
 
-	public List<Usuario> listarUsuario() {
+	public List<Usuarios> listarUsuario() {
 		String jpql = "SELECT u FROM usuarios u";
-		Query q = em.createQuery(jpql, Usuario.class);
-		List<Usuario> usuario = q.getResultList();
+		Query q = em.createQuery(jpql, Usuarios.class);
+		List<Usuarios> usuario = q.getResultList();
 		System.out.println("usuariosssssssssss"+usuario.toString());
 		return usuario;
 	}

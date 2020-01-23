@@ -11,7 +11,7 @@ import javax.inject.Inject;
 import Datos.direccionesDAO;
 import Datos.usuariosDAO;
 import modelo.Direccion;
-import modelo.Usuario;
+import modelo.Usuarios;
 
 @ManagedBean
 @ViewScoped

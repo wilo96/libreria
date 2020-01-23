@@ -4,21 +4,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
+import javax.ejb.Stateless;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.inject.Inject;
 
 import Datos.direccionesDAO;
 import Datos.usuariosDAO;
-import modelo.Usuario;
+import modelo.Usuarios;
 
-@ManagedBean
-@ViewScoped
+@Stateless
 public class usuarioControlador {
 	//private String campoCedula;
 	private String campoCedula;
-	private Usuario usuario;
-	private List<Usuario> listaU;
+	private Usuarios usuario;
+	private List<Usuarios> listaU;
 	
 	@Inject
 	private usuariosDAO udao;
@@ -26,29 +26,29 @@ public class usuarioControlador {
 	@PostConstruct
 	public void init() {
 	//	campoCedula=;
-		usuario = new Usuario();
-		listaU= new ArrayList<Usuario>();
+		usuario = new Usuarios();
+		listaU= new ArrayList<Usuarios>();
 	}
 	
-	public Usuario getUsuario() {
+	public Usuarios getUsuario() {
 		return usuario;
 	}
 
 
 
-	public void setUsuario(Usuario usuario) {
+	public void setUsuario(Usuarios usuario) {
 		this.usuario = usuario;
 	}
 
 
 
-	public List<Usuario> getListaU() {
+	public List<Usuarios> getListaU() {
 		return listaU;
 	}
 
 
 
-	public void setListaU(List<Usuario> listaU) {
+	public void setListaU(List<Usuarios> listaU) {
 		this.listaU = listaU;
 	}
 
@@ -61,17 +61,17 @@ public class usuarioControlador {
 	public void setCampoCedula(String campoCedula) {
 		this.campoCedula = campoCedula;
 	}
-	public List<Usuario> listado() {
+	public List<Usuarios> listado() {
 		return udao.listarUsuario();
 	}
 	
-	public Usuario filtrar() {
-		System.out.println("filtrar "+this.campoCedula);
-		this.usuario=udao.buscar(this.usuario.getCedula());
-		 return udao.buscar(this.usuario.getCedula());
+	public Usuarios filtrar(String cedula) {
+		System.out.println("filtrar "+cedula);
+		this.usuario=udao.buscar(cedula);
+		 return udao.buscar(cedula);
 	}
 
-	public Usuario usuarioServicio(String cedula) {
+	public Usuarios usuarioServicio(String cedula) {
 		System.out.println("filtrar "+cedula);
 		this.usuario=udao.buscar(cedula);
 		 return udao.buscar(cedula);
@@ -84,7 +84,7 @@ public class usuarioControlador {
 		return null;
 	}
 	
-	public String guardarUsuarioServicio(Usuario usuarioo) {
+	public String guardarUsuarioServicio(Usuarios usuarioo) {
 		System.out.println(usuarioo);
 		udao.insertar(usuarioo);
 		return null;
@@ -100,11 +100,10 @@ public class usuarioControlador {
 		return null;
 	}
 	
-	public String Buscar() {
-		Usuario u=udao.buscar(this.campoCedula);
-		listado();
-		usuario=u;
-		return null;
+	public String BuscarLog(String correo, String contra) {
+		List<Usuarios> u=udao.loginbus(correo, contra);
+		String respuesta = String.valueOf(u.get(0));
+		return respuesta;
 	}
 	
 	

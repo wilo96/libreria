@@ -12,9 +12,9 @@ import javax.ws.rs.Produces;
 import controlador.categoriaControlador;
 import controlador.libroControlador;
 import modelo.Categoria;
+import modelo.Libros;
 import controlador.usuarioControlador;
-import modelo.Libro;
-import modelo.Usuario;
+import modelo.Usuarios;
 
 @Path("/libros")
 public class ServiciosLibros {
@@ -38,7 +38,7 @@ public class ServiciosLibros {
 	@POST
 	@Produces("application/json")
 	@Consumes("application/json")
-	public respuestaLibros crearLibro(Libro libro)
+	public respuestaLibros crearLibro(Libros libro)
 	{
 		respuestaLibros r = new respuestaLibros();
 		try
@@ -57,14 +57,14 @@ public class ServiciosLibros {
 	@GET
 	@Path("/listLibros")
 	@Produces("application/json")
-	public List<Libro> getLibros(){
+	public List<Libros> getLibros(){
 		return lc.listado();
 	}
 	
 	@GET
 	@Path("/listUsuarios")
 	@Produces("application/json")
-	public List<Usuario> getUsuarios(){
+	public List<Usuarios> getUsuarios(){
 		return uc.listado();
 	}
 	

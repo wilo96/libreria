@@ -8,14 +8,22 @@ import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 
 import controlador.usuarioControlador;
-import modelo.Usuario;
+import modelo.Usuarios;
 
 @Path("/Usuarios")
 public class ServiciosUsuarios {
 	@Inject
 	private usuarioControlador uc;
+	
+	@GET
+	@Path("/buscarusu")
+	@Produces("application/json")
+	public String BuscarUsuario(@QueryParam("correo") String correo, @QueryParam("contra") String contra) {
+		return uc.BuscarLog(correo, contra);
+	}
 	/*
 	@GET
 	@Path("/listUsuarios")

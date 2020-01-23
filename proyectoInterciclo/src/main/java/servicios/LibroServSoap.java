@@ -15,8 +15,8 @@ import controlador.categoriaControlador;
 import controlador.libroControlador;
 import controlador.usuarioControlador;
 import modelo.Categoria;
-import modelo.Libro;
-import modelo.Usuario;
+import modelo.Libros;
+import modelo.Usuarios;
 
 @WebService
 public class LibroServSoap {
@@ -35,7 +35,7 @@ public class LibroServSoap {
 	}
 	
 	@WebMethod
-	public respuestaLibros crearLibro(Libro libro)
+	public respuestaLibros crearLibro(Libros libro)
 	{
 		respuestaLibros r = new respuestaLibros();
 		try
@@ -52,14 +52,19 @@ public class LibroServSoap {
 	}
 
 	@WebMethod
-	public List<Libro> getLibros(){
+	public List<Libros> getLibros(){
 		return lc.listado();
 	}
 	
 	@WebMethod
-	public List<Usuario> getUsuarios(){
+	public List<Usuarios> getUsuarios(){
 		return uc.listado();
 	}
+	
+	/*@WebMethod
+	public Usuario filtrado(String cedula){
+		return uc.filtrar(cedula);
+	}*/
 	
 	
 }

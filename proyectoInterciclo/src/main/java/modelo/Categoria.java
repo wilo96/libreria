@@ -32,7 +32,7 @@ public class Categoria {
 	
 	@OneToMany(cascade = {CascadeType.ALL}, fetch = FetchType.EAGER)
 	@JoinColumn(name = "id_cat_fk", referencedColumnName = "codigo")
-	private List<Libro> libro;
+	private List<Libros> libro;
 	
 	public int getCodigo() {
 		return codigo;
@@ -46,10 +46,10 @@ public class Categoria {
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
-	public List<Libro> getLibro() {
+	public List<Libros> getLibro() {
 		return libro;
 	}
-	public void setLibro(List<Libro> libro) {
+	public void setLibro(List<Libros> libro) {
 		this.libro = libro;
 	}
 	@Override

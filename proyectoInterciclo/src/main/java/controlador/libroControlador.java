@@ -4,18 +4,20 @@ import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 import javax.annotation.PostConstruct;
+import javax.ejb.Stateless;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 
 import Datos.categoriasDAO;
 import Datos.librosDAO;
-import modelo.Libro;
-import modelo.Usuario;
+import modelo.Libros;
+import modelo.Usuarios;
 
-@ManagedBean
-@ViewScoped
+//@ManagedBean
+//@ViewScoped
+@Stateless
 public class libroControlador {
-	private Libro libro;
+	private Libros libro;
 	
 	@Inject
 	private librosDAO ldao;
@@ -24,18 +26,18 @@ public class libroControlador {
 	
 	@PostConstruct
 	public void init() {
-		libro = new Libro();
+		libro = new Libros();
 	}
 	
-	public Libro getLibro() {
+	public Libros getLibro() {
 		return libro;
 	}
 
-	public void setLibro(Libro libro) {
+	public void setLibro(Libros libro) {
 		this.libro = libro;
 	}
 
-	public List<Libro> listado() {
+	public List<Libros> listado() {
 		return ldao.listarLibro();
 	}
 
@@ -47,7 +49,7 @@ public class libroControlador {
 	}
 
 	
-	public String nuevoLibro(Libro libros) {
+	public String nuevoLibro(Libros libros) {
 		System.out.println(libros);
 		ldao.insertar(libros);
 		return null;
@@ -60,7 +62,7 @@ public class libroControlador {
 		this.libro=ldao.buscar(this.libro.getCodigo());
 		 return ldao.buscar(this.libro.getCodigo());
 	}*/
-	public Libro filtrar() {
+	public Libros filtrar() {
 		 return ldao.buscar(this.libro.getCodigo());
 	}
 
@@ -76,7 +78,7 @@ public class libroControlador {
 	}
 	
 	public String Buscar() {
-		Libro l=ldao.buscar(libro.getCodigo());
+		Libros l=ldao.buscar(libro.getCodigo());
 		listado();
 		libro=l;
 		return "blank";

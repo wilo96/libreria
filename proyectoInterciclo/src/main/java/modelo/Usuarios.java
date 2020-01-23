@@ -17,7 +17,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity(name="usuarios")
 @Table(name="usuarios")
-public class Usuario {
+public class Usuarios {
 	
 		@Id
 		@Column(name="cedula")

@@ -8,7 +8,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
 import modelo.Direccion;
-import modelo.Usuario;
+import modelo.Usuarios;
 
 @Stateless
 public class direccionesDAO {

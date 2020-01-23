@@ -21,7 +21,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity(name="libros")
 @Table(name="libros")
-public class Libro {
+public class Libros {
 	 
 	@Id
 	@Column(name="codigo")	
