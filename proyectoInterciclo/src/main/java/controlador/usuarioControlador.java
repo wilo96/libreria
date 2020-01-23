@@ -100,6 +100,7 @@ public class usuarioControlador {
 		return null;
 	}
 	
+	
 	public String BuscarLog(String correo, String contra) {
 		List<Usuarios> u=udao.loginbus(correo, contra);
 		String respuesta = String.valueOf(u.get(0));
