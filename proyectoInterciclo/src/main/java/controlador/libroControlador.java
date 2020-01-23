@@ -13,8 +13,7 @@ import Datos.librosDAO;
 import modelo.Libros;
 import modelo.Usuarios;
 
-//@ManagedBean
-//@ViewScoped
+
 @Stateless
 public class libroControlador {
 	private Libros libro;

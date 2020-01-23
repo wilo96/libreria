@@ -32,6 +32,7 @@ public class ServiciosLibros {
 	@Path("consultar")
 	@Produces("application/json")
 	public  List<Categoria> getCategorias(){
+		System.out.println("Esta entrando");
 		return cc.listado();
 	}
 	

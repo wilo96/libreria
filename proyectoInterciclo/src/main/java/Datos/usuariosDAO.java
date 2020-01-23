@@ -37,8 +37,8 @@ public class usuariosDAO {
 	}
 	public List<Usuarios> loginbus(String correo, String contra) {
 		System.out.println("dao "+correo);
-		String sql = "SELECT u FROM Usuarios u where u.correo = '"+correo+"' and u.contrasenia='"+contra+"'";
-		Query q = em.createQuery(sql,Usuarios.class);
+		String sql = "SELECT u FROM usuarios u where u.correo = '"+correo+"' and u.contrasenia='"+contra+"'";
+		Query q = em.createQuery(sql, Usuarios.class);
 		List<Usuarios> login = q.getResultList();
 		return login;
 	}
