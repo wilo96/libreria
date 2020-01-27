@@ -19,7 +19,7 @@ public class FacturaCab {
 
 	@Id
 	@Column(name = "codigo")
-	@GeneratedValue(strategy=GenerationType.AUTO )
+	//@GeneratedValue(strategy=GenerationType.AUTO )
 	private int codigo;
 	
 	@Column(name = "id_usufc_fk")

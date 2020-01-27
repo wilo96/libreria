@@ -9,27 +9,27 @@ import javax.persistence.Table;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
-@Entity(name="carritos")
+@Entity
 @Table(name="carritos")
-public class Carrito {
+public class Carritos {
 
 	
 	
 	@Id
 	@Column(name="codigo")
-	@GeneratedValue(strategy=GenerationType.AUTO )
+	//@GeneratedValue(strategy=GenerationType.AUTO )
 	private int codigo;
 	
-	@NotEmpty
-	@Column(name="cantidad", length = 3)
-	private int cant;
 	
-	@NotEmpty
+	@Column(name="cantidad")
+	private int cantidad;
+	
+	
 	@Column(name="precioLib")
 	private double precioLib;
 	
-	@NotEmpty
-	@Column(name="descuentoLib", length = 2)
+	
+	@Column(name="descuentoLib")
 	private int descuentoLib;
 	
 	@Column(name = "id_libc_FK")
@@ -43,12 +43,12 @@ public class Carrito {
 		this.codigo = codigo;
 	}
 
-	public int getCant() {
-		return cant;
+	public int getCantidad() {
+		return cantidad;
 	}
 
-	public void setCant(int cant) {
-		this.cant = cant;
+	public void setCantidad(int cantidad) {
+		this.cantidad = cantidad;
 	}
 
 	public double getPrecioLib() {
@@ -77,7 +77,7 @@ public class Carrito {
 
 	@Override
 	public String toString() {
-		return "Carrito [codigo=" + codigo + ", cant=" + cant + ", precioLib=" + precioLib + ", descuentoLib="
+		return "Carrito [codigo=" + codigo + ", cant=" + cantidad + ", precioLib=" + precioLib + ", descuentoLib="
 				+ descuentoLib + ", id_libc_FK=" + id_libc_FK + "]";
 	}
 

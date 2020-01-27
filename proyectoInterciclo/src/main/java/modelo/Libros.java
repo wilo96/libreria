@@ -19,7 +19,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 
 
-@Entity(name="libros")
+@Entity
 @Table(name="libros")
 public class Libros {
 

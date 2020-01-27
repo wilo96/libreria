@@ -14,7 +14,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 public class FacturaDet {
 	@Id
 	@Column(name = "codigo")
-	@GeneratedValue(strategy=GenerationType.AUTO )
+	//@GeneratedValue(strategy=GenerationType.AUTO )
 	private int codigo;
 	
 	@Column(name = "id_faccab_FK")
@@ -23,16 +23,13 @@ public class FacturaDet {
 	@Column(name = "id_facd_FK")
 	private int id_facd_FK;
 	
-	@NotEmpty
-	@Column(name="cant", length = 3)
+	@Column(name="cant")
 	private int cant;
 	
-	@NotEmpty
 	@Column(name="precioLib")
 	private double precioLib;
 	
-	@NotEmpty
-	@Column(name="descuentoLib", length = 2)
+	@Column(name="descuentoLib")
 	private int descuentoLib;
 	
 	@NotEmpty
@@ -41,7 +38,7 @@ public class FacturaDet {
 	
 	@NotEmpty
 	@Column(name="Total")
-	private int total;
+	private double total;
 
 	public int getCodigo() {
 		return codigo;
@@ -101,11 +98,11 @@ public class FacturaDet {
 		this.subt = subt;
 	}
 
-	public int getTotal() {
+	public double getTotal() {
 		return total;
 	}
 
-	public void setTotal(int total) {
+	public void setTotal(double total) {
 		this.total = total;
 	}
 
