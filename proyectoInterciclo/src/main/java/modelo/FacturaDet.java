@@ -9,7 +9,7 @@ import javax.persistence.Table;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
-@Entity(name="FacturaDets")
+@Entity
 @Table(name="FacturaDets")
 public class FacturaDet {
 	@Id
@@ -17,8 +17,8 @@ public class FacturaDet {
 	//@GeneratedValue(strategy=GenerationType.AUTO )
 	private int codigo;
 	
-	@Column(name = "id_faccab_FK")
-	private int id_faccab_FK;
+	@Column(name = "id_faccab_fk")
+	private int id_faccab_fk;
 	
 	@Column(name = "id_facd_FK")
 	private int id_facd_FK;
@@ -48,14 +48,12 @@ public class FacturaDet {
 		this.codigo = codigo;
 	}
 
-	
-
-	public int getId_faccab_FK() {
-		return id_faccab_FK;
+	public int getId_faccab_fk() {
+		return id_faccab_fk;
 	}
 
-	public void setId_faccab_FK(int id_faccab_FK) {
-		this.id_faccab_FK = id_faccab_FK;
+	public void setId_faccab_fk(int id_faccab_fk) {
+		this.id_faccab_fk = id_faccab_fk;
 	}
 
 	public int getId_facd_FK() {
@@ -108,10 +106,12 @@ public class FacturaDet {
 
 	@Override
 	public String toString() {
-		return "FacturaDet [codigo=" + codigo + ", id_faccab_FK=" + id_faccab_FK + ", id_facd_FK=" + id_facd_FK
+		return "FacturaDet [codigo=" + codigo + ", id_faccab_fk=" + id_faccab_fk + ", id_facd_FK=" + id_facd_FK
 				+ ", cant=" + cant + ", precioLib=" + precioLib + ", descuentoLib=" + descuentoLib + ", subt=" + subt
 				+ ", total=" + total + "]";
 	}
+
+
 	
 	
 }

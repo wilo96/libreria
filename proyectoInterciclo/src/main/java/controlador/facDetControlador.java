@@ -7,7 +7,7 @@ import javax.ejb.Stateless;
 import javax.inject.Inject;
 
 import Datos.facDetDAO;
-import modelo.FacturaCab;
+import modelo.FacturaCabs;
 import modelo.FacturaDet;
 
 @Stateless
@@ -37,7 +37,7 @@ public class facDetControlador {
 	
 	public String guardarDetalle(int codlib, int facab, int canti, int descu, double precio, double subtot, double total) {
 		FacturaDet fcde = new FacturaDet();
-		fcde.setId_faccab_FK(facab);
+		fcde.setId_faccab_fk(facab);
 		fcde.setId_facd_FK(codlib);
 		fcde.setCant(canti);
 		fcde.setDescuentoLib(descu);

@@ -4,12 +4,15 @@ import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.Stateless;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
 import javax.inject.Inject;
 
 import Datos.votosDAO;
 import modelo.Votos;
 
-@Stateless
+@ManagedBean
+@ViewScoped
 public class votosControlador {
 	private Votos votos;
 	int codigoU;

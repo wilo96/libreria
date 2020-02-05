@@ -34,15 +34,25 @@ public class carritoDAO {
 	public void eliminar(int codigo) {
 		em.remove(codigo);
 	}
-	
+//modificado	
 	public List<Carritos> listaCarro(){
+		//String sql="SELECT c FROM Carritos c";
+		String sql ="SELECT c.codigo, c.cantidad, c.precioLib, c.descuentoLib, l.titulo, l.imagen, c.id_libc_FK FROM Carritos c, Libros l where l.codigo= c.id_libc_FK";
+		Query q = em.createQuery(sql, Object[].class);
+		List<Carritos> carro = q.getResultList();
+		return carro;
+		
+	}
+	public List<Carritos> listaCarritoT(){
 		String sql="SELECT c FROM Carritos c";
+		//String sql ="SELECT c.codigo, c.cantidad, c.precioLib, c.descuentoLib, l.titulo, l.imagen, c.id_libc_FK FROM Carritos c, Libros l where l.codigo= c.id_libc_FK";
 		Query q = em.createQuery(sql, Carritos.class);
 		List<Carritos> carro = q.getResultList();
 		return carro;
 		
 	}
-	
+
+//fin modificado
 	public List<Carritos> ultimoReg() {
 		String sql = "SELECT MAX(c.codigo) FROM Carritos c";
 		Query q = em.createQuery(sql, Integer.class);

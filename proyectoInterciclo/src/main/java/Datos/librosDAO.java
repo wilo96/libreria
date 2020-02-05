@@ -35,7 +35,7 @@ public class librosDAO {
 	}
 
 	public List<Libros> listarLibro() {
-		String jpql = "SELECT l FROM libros l";
+		String jpql = "SELECT l FROM Libros l";
 		Query q = em.createQuery(jpql, Libros.class);
 		List<Libros> libro = q.getResultList();
 		System.out.println("librosssssssssss"+libro.toString());

@@ -17,6 +17,7 @@ import controlador.facDetControlador;
 import controlador.libroControlador;
 import modelo.Carritos;
 import modelo.Categoria;
+import modelo.FacturaCabs;
 import modelo.Libros;
 import controlador.usuarioControlador;
 import controlador.votosControlador;
@@ -92,6 +93,7 @@ public class ServiciosLibros {
 		return fcc.guardarCabecera(usuid, direc, tarjeta);
 	}
 	
+	
 	@GET
 	@Path("/nuevodet")
 	@Produces("application/json")
@@ -125,6 +127,15 @@ public class ServiciosLibros {
 		return cac.listaCompras();
 	}
 	
+	//añadido de servicio
+	@GET
+	@Path("/listComprasT")
+	@Produces("application/json")
+	public List<Carritos> getCarritoT(@QueryParam("idPers") String idpers, @QueryParam("iddirec") int iddirec, @QueryParam("idtarj") int idtarj ){
+		return cac.listaComprasT(idpers, iddirec, idtarj);
+	}
+	//fin añadido
+	
 
 	@GET
 	@Path("/listLibros")
@@ -145,6 +156,13 @@ public class ServiciosLibros {
 	@Produces("application/json")
 	public List<Carritos> ultreg(){
 		return cac.ultimoReg();
+	}
+	
+	@GET
+	@Path("/ultregfacab")
+	@Produces("application/json")
+	public List<FacturaCabs> ultregfacab(){
+		return fcc.ultReg();
 	}
 	
 	

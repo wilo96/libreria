@@ -40,7 +40,7 @@ public class Tarjeta {
 	
 	@OneToMany(cascade = {CascadeType.ALL}, fetch = FetchType.EAGER)
 	@JoinColumn(name = "id_tarjet_fk", referencedColumnName = "codigo")
-	private List<FacturaCab> facturacab;
+	private List<FacturaCabs> facturacab;
 
 	public int getCodigo() {
 		return codigo;
@@ -86,11 +86,11 @@ public class Tarjeta {
 
 	
 	
-	public List<FacturaCab> getFacturacab() {
+	public List<FacturaCabs> getFacturacab() {
 		return facturacab;
 	}
 
-	public void setFacturacab(List<FacturaCab> facturacab) {
+	public void setFacturacab(List<FacturaCabs> facturacab) {
 		this.facturacab = facturacab;
 	}
 

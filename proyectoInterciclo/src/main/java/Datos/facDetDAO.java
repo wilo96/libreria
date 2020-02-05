@@ -7,7 +7,7 @@ import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
-import modelo.FacturaCab;
+import modelo.FacturaCabs;
 import modelo.FacturaDet;
 
 @Stateless

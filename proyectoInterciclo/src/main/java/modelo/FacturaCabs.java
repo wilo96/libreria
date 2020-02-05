@@ -13,9 +13,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-@Entity(name="FacturaCabs")
+@Entity
 @Table(name="FacturaCabs")
-public class FacturaCab {
+public class FacturaCabs {
 
 	@Id
 	@Column(name = "codigo")
@@ -33,7 +33,7 @@ public class FacturaCab {
 	
 	@OneToMany(cascade = {CascadeType.ALL}, fetch = FetchType.EAGER)
 	@JoinColumn(name = "id_faccab_fk", referencedColumnName = "codigo")
-	private List<FacturaDet> facturadet;
+	private List<FacturaDet> id_faccab_fk;
 
 	public int getCodigo() {
 		return codigo;
@@ -69,19 +69,24 @@ public class FacturaCab {
 		this.id_tarjet_FK = id_tarjet_FK;
 	}
 
-	public List<FacturaDet> getFacturadet() {
-		return facturadet;
+	public List<FacturaDet> getId_faccab_fk() {
+		return id_faccab_fk;
 	}
 
-	public void setFacturadet(List<FacturaDet> facturadet) {
-		this.facturadet = facturadet;
+	public void setId_faccab_fk(List<FacturaDet> id_faccab_fk) {
+		this.id_faccab_fk = id_faccab_fk;
 	}
 
 	@Override
 	public String toString() {
-		return "FacturaCab [codigo=" + codigo + ", id_usufc_FK=" + id_usufc_FK + ", id_direcc_FK=" + id_direcc_FK
-				+ ", id_tarjet_FK=" + id_tarjet_FK + ", facturadet=" + facturadet + "]";
+		return "FacturaCabs [codigo=" + codigo + ", id_usufc_FK=" + id_usufc_FK + ", id_direcc_FK=" + id_direcc_FK
+				+ ", id_tarjet_FK=" + id_tarjet_FK + ", id_faccab_fk=" + id_faccab_fk + "]";
 	}
+
+
+
+
+
 
 	
 	
