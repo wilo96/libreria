@@ -14,12 +14,12 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="FacturaCabs")
+@Table(name="facturacabs")
 public class FacturaCabs {
 
 	@Id
 	@Column(name = "codigo")
-	//@GeneratedValue(strategy=GenerationType.AUTO )
+	//@GeneratedValue(strategy=GenerationType.AUTO)
 	private int codigo;
 	
 	@Column(name = "id_usufc_fk")
@@ -80,7 +80,7 @@ public class FacturaCabs {
 	@Override
 	public String toString() {
 		return "FacturaCabs [codigo=" + codigo + ", id_usufc_FK=" + id_usufc_FK + ", id_direcc_FK=" + id_direcc_FK
-				+ ", id_tarjet_FK=" + id_tarjet_FK + ", id_faccab_fk=" + id_faccab_fk + "]";
+				+ ", id_tarjet_FK=" + id_tarjet_FK + "]";
 	}
 
 

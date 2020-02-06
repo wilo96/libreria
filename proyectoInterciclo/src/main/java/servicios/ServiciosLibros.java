@@ -10,6 +10,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 
+import Datos.facCabDAO;
 import controlador.carritoControlador;
 import controlador.categoriaControlador;
 import controlador.facCabControlador;
@@ -26,6 +27,8 @@ import modelo.Votos;
 
 @Path("/libros")
 public class ServiciosLibros {
+	
+	private facCabDAO fcdao;
 	
 	@Inject
 	private categoriaControlador cc;
@@ -127,12 +130,37 @@ public class ServiciosLibros {
 		return cac.listaCompras();
 	}
 	
+	@GET
+	@Path("/listComprasTotales")
+	@Produces("application/json")
+	public List<Carritos> getCarritoTotal(){
+		return cac.listaComprasTot();
+	}
+	
 	//añadido de servicio
 	@GET
 	@Path("/listComprasT")
 	@Produces("application/json")
-	public List<Carritos> getCarritoT(@QueryParam("idPers") String idpers, @QueryParam("iddirec") int iddirec, @QueryParam("idtarj") int idtarj ){
-		return cac.listaComprasT(idpers, iddirec, idtarj);
+	public String getCarritoT(@QueryParam("idPers") String idpers, @QueryParam("iddirec") int iddirec, @QueryParam("idtarj") int idtarj ){
+		
+		fcc.guardarCabecera(idpers, iddirec, idtarj);
+		String registro = fcc.guardarCabecera(idpers, iddirec, idtarj);
+		int facab=Integer.parseInt(registro);
+		List<FacturaCabs> ulreg;
+		List<Carritos> compras = getCarritoTotal();
+		//System.out.println(compras.toString());
+		for (Carritos carritos : compras) {
+			/*ulreg=fcdao.ultimoReg();
+			String codigo=ulreg.toString().substring(1,ulreg.toString().length()-1);
+			int facab=Integer.parseInt(codigo);*/
+			
+			System.out.println(carritos);
+			System.out.println(facab);
+			fcd.guardarDetalle(carritos.getId_libc_FK(), (facab-1), carritos.getCantidad(), carritos.getDescuentoLib(), carritos.getPrecioLib(), Double.valueOf(carritos.getCantidad())*(carritos.getPrecioLib()*(Double.valueOf(carritos.getDescuentoLib())/100)), (Double.valueOf(carritos.getCantidad())*(carritos.getPrecioLib()*(Double.valueOf(carritos.getDescuentoLib()/100)))*0.12));
+		}
+		//fcd.guardarDetalle(codlib, facab, canti, descu, precio, subtot, total)
+		//return cac.listaComprasT(idpers, iddirec, idtarj);
+		return "ok";
 	}
 	//fin añadido
 	
@@ -158,12 +186,6 @@ public class ServiciosLibros {
 		return cac.ultimoReg();
 	}
 	
-	@GET
-	@Path("/ultregfacab")
-	@Produces("application/json")
-	public List<FacturaCabs> ultregfacab(){
-		return fcc.ultReg();
-	}
 	
 	
 	

@@ -35,31 +35,55 @@ public class facCabControlador {
 
 	
 	
-	public List<FacturaCabs> ultReg(){
-		return fcd.ultimoReg();
-	}
+int cont=1;
 	//modifique esta parte de guardarCabecera
-	public String guardarCabecera(String codpers, int iddirec, int idtarj) {
-		System.out.println(codpers+" "+iddirec+" "+idtarj);
+	public String guardarCabecera(String idPers, int iddirec, int idtarj) {
+		int co=0;
+		//System.out.println(codpers+" "+iddirec+" "+idtarj);
 		List<FacturaDet> fdl=new ArrayList<>();
-		FacturaCabs fcab = new FacturaCabs();
-		fcab.setId_usufc_FK(codpers);
-		fcab.setId_direcc_FK(iddirec);
-		fcab.setId_tarjet_FK(idtarj);
-		System.out.println(fcab.getId_usufc_FK()+" "+fcab.getId_direcc_FK()+" "+fcab.getId_tarjet_FK());
-		System.out.println((ultReg().toString().substring(1,ultReg().toString().length()-1)));
+		List<FacturaCabs> ulreg= new ArrayList<>();
+		//FacturaCabs fcab = new FacturaCabs();
+		facab.setId_usufc_FK(idPers);
+		facab.setId_direcc_FK(iddirec);
+		facab.setId_tarjet_FK(idtarj);
 		try {
-		codU=1+Integer.parseInt(ultReg().toString().substring(1,ultReg().toString().length()-1));
-		fcab.setCodigo(codU);
-		fcab.setId_faccab_fk(fdl);
-		return fcd.insertarFacCab(fcab);
+			ulreg=fcd.ultimoReg();
+			String codigo=ulreg.toString().substring(1,ulreg.toString().length()-1);
+			if(codigo.equals("null")) {
+				System.out.println("Estamos con un null");
+				facab.setCodigo(1);
+			}
+			else {
+				co=Integer.parseInt(codigo);
+				facab.setCodigo(co+1);
+			}
+			
+		}catch(Exception e)
+		{
+			facab.setCodigo(1);
+			//ulreg.add(fcab);
 		}
-		catch(Exception e) {
-			fcab.setCodigo(1);
-			fcab.setId_faccab_fk(fdl);
-			System.out.println(fcab.toString());
-			return fcd.insertarFacCab(fcab);
+		//System.out.println("Esta aqui "+ulreg.toString());
+		System.out.println("Pasamos aqui seteando "+facab.toString());
+		//System.out.println(fcab.getId_usufc_FK()+" "+fcab.getId_direcc_FK()+" "+fcab.getId_tarjet_FK());
+		//System.out.println((ultReg().toString().substring(1,ultReg().toString().length()-1)));
+		
+			//fcab.setCodigo(1);
+			//fcab.setId_faccab_fk(fdl);
+			//System.out.println(fcab.toString());
+			//return fcd.insertarFacCab(fcab);
+	
+		//codU=1+Integer.parseInt(ultReg().toString().substring(1,ultReg().toString().length()-1));
+		//fcab.setCodigo(codU);
+		//fcab.setId_faccab_fk(fdl);
+		//facab.setId_faccab_fk(fdl);
+		if(cont==1)
+		{
+		fcd.insertarFacCab(facab);
+		cont++;
 		}
+			return String.valueOf(co);
+		
 		
 		
 	}

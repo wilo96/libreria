@@ -16,15 +16,16 @@ public class facCabDAO {
 	@Inject
 	private EntityManager em;
 	
-	public String insertarFacCab(FacturaCabs facab) {
+	public void insertarFacCab(FacturaCabs facab) {
+		System.out.println("Entro al DAO "+facab.toString());
 		em.persist(facab);
-		return "Cabecera Lista";
 	}
 	//hice un rename de la clase facturacab a facturacabs
 	public List<FacturaCabs> ultimoReg() {
 		String sql = "SELECT MAX(f.codigo) FROM FacturaCabs f";
 		Query q = em.createQuery(sql, Integer.class);
 		List<FacturaCabs> res=q.getResultList();
+		System.out.println("Esto devuelve el maximo valor "+res.toString());
 		return res;
 	}
 

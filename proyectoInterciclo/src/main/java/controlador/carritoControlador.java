@@ -8,10 +8,12 @@ import javax.inject.Inject;
 
 import Datos.carritoDAO;
 import modelo.Carritos;
+import modelo.FacturaCabs;
 
 @Stateless
 public class carritoControlador {
 	private Carritos carrito;
+	private FacturaCabs fca;
 	private facDetControlador fdc;
 	private facCabControlador fcc;
 	
@@ -21,6 +23,7 @@ public class carritoControlador {
 	@PostConstruct
 	public void init() {
 		carrito = new Carritos();
+		fca= new FacturaCabs();
 		fdc = new facDetControlador();
 		fcc = new facCabControlador();
 	}
@@ -37,13 +40,17 @@ public class carritoControlador {
 		return cdao.listaCarro();
 	}
 	
-	public List<Carritos> listaComprasT(String codpers, int iddirec, int idtarj){
+	public List<Carritos> listaComprasTot(){
+		return cdao.listaCarroTot();
+	}
+	
+	public List<Carritos> listaComprasT(String idpers, int iddirec, int idtarj){
 		List<Carritos> elemen=cdao.listaCarritoT();
 		System.out.println(elemen.toString());
-		fcc.guardarCabecera(codpers, iddirec, idtarj);
-		int facab = Integer.parseInt(fcc.ultReg().toString().substring(1,fcc.ultReg().toString().length()-1));
+		fcc.guardarCabecera(idpers, iddirec, idtarj);
+		//int facab = Integer.parseInt(fcc.ultReg().toString().substring(1,fcc.ultReg().toString().length()-1));
 		for(Carritos elem : elemen) {
-			fdc.guardarDetalle(elem.getId_libc_FK(), facab, elem.getCantidad(), elem.getDescuentoLib(), elem.getPrecioLib(), (Double.valueOf(elem.getCantidad())*(elem.getPrecioLib()-(Double.valueOf(elem.getDescuentoLib())/100))), (Double.valueOf(elem.getCantidad())*(elem.getPrecioLib()-(Double.valueOf(elem.getDescuentoLib())/100))*(0.12)));
+			//fdc.guardarDetalle(elem.getId_libc_FK(), facab, elem.getCantidad(), elem.getDescuentoLib(), elem.getPrecioLib(), (Double.valueOf(elem.getCantidad())*(elem.getPrecioLib()-(Double.valueOf(elem.getDescuentoLib())/100))), (Double.valueOf(elem.getCantidad())*(elem.getPrecioLib()-(Double.valueOf(elem.getDescuentoLib())/100))*(0.12)));
 		//	guardarCompra(elem.getId_libc_FK(), elem.getCantidad(), elem.getPrecioLib(), elem.getDescuentoLib());
 			System.out.println(elem.toString());
 		}

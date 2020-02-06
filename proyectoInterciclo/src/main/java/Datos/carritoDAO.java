@@ -43,6 +43,14 @@ public class carritoDAO {
 		return carro;
 		
 	}
+	public List<Carritos> listaCarroTot(){
+		String sql="SELECT c FROM Carritos c";
+		//String sql ="SELECT c.codigo, c.cantidad, c.precioLib, c.descuentoLib, l.titulo, l.imagen, c.id_libc_FK FROM Carritos c, Libros l where l.codigo= c.id_libc_FK";
+		Query q = em.createQuery(sql, Object[].class);
+		List<Carritos> carro = q.getResultList();
+		return carro;
+		
+	}
 	public List<Carritos> listaCarritoT(){
 		String sql="SELECT c FROM Carritos c";
 		//String sql ="SELECT c.codigo, c.cantidad, c.precioLib, c.descuentoLib, l.titulo, l.imagen, c.id_libc_FK FROM Carritos c, Libros l where l.codigo= c.id_libc_FK";
