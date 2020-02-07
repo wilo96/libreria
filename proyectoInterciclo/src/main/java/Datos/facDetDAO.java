@@ -8,23 +8,27 @@ import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
 import modelo.FacturaCabs;
-import modelo.FacturaDet;
+import modelo.FacturaDets;
 
 @Stateless
 public class facDetDAO {
 	@Inject
 	private EntityManager em;
 	
-	public String insertarFacDet(FacturaDet facde) {
+	public void insertarFacDet(FacturaDets facde) {
+		System.out.println("Entramos en el DAO a ver que onda");
+		System.out.println(facde.toString());
 		em.persist(facde);
-		return "Detalle Listo";
 	}
 	
-	public List<FacturaDet> ultimoReg() {
-		String sql = "SELECT MAX(f.codigo) FROM FacturaDet f";
+	public List<FacturaDets> ultimoReg() {
+		String sql = "SELECT MAX(f.codigo) FROM FacturaDets f";
 		Query q = em.createQuery(sql, Integer.class);
-		List<FacturaDet> res=q.getResultList();
+		List<FacturaDets> res=q.getResultList();
+		System.out.println("Esto devuelve el maximo valor "+res.toString());
+
 		return res;
 	}
+
 
 }

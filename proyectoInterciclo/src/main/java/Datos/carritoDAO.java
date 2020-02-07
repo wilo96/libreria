@@ -34,6 +34,12 @@ public class carritoDAO {
 	public void eliminar(int codigo) {
 		em.remove(codigo);
 	}
+	
+	public void eliminardatos() {
+		Query q = em.createQuery("DELETE FROM Carritos");
+		q.executeUpdate();
+	}
+	
 //modificado	
 	public List<Carritos> listaCarro(){
 		//String sql="SELECT c FROM Carritos c";
@@ -65,6 +71,7 @@ public class carritoDAO {
 		String sql = "SELECT MAX(c.codigo) FROM Carritos c";
 		Query q = em.createQuery(sql, Integer.class);
 		List<Carritos> res=q.getResultList();
+		System.out.println("Carritulo ultimo ingreso "+res.toString());
 		return res;
 	}
 	

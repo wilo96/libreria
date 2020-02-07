@@ -61,27 +61,34 @@ public class direccionControlador {
 		 return ddao.buscar(this.direc.getId_usu_FK());
 	}
 
-	public String guardarDireccion() {
-		System.out.println(direc);
-		ddao.insertar(direc);
-		return "blank";
+	public String guardarDireccion(String callep, String calles, String numcaa, String ciud, String prov, String usu) {
+		Direccion dir = new Direccion();
+		dir.setCallePrinc(callep);
+		dir.setCalleSec(calles);
+		dir.setNumCasa(numcaa);
+		dir.setCiudad(ciud);
+		dir.setProvincia(prov);
+		dir.setId_usu_FK(usu);
+		System.out.println(dir.toString());
+		ddao.insertar(dir);
+		return "ok";
 	}
 	
 	public String editarDireccion() {
 		ddao.editar(direc);
-		return "blank";
+		return "ok";
 	}
 	
 	public String eliminarDireccion(String cedula) {
 		ddao.eliminar(cedula);
-		return "blank";
+		return "ok";
 	}
 	
 	public String Buscar() {
 		Direccion d=ddao.buscar(direc.getId_usu_FK());
 		listado();
 		direc=d;
-		return "blank";
+		return "ok";
 	}
 	
 }

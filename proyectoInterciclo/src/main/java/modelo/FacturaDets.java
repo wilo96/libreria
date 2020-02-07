@@ -11,7 +11,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 @Table(name="FacturaDets")
-public class FacturaDet {
+public class FacturaDets {
 	@Id
 	@Column(name = "codigo")
 	//@GeneratedValue(strategy=GenerationType.AUTO )
@@ -32,11 +32,11 @@ public class FacturaDet {
 	@Column(name="descuentoLib")
 	private int descuentoLib;
 	
-	@NotEmpty
+	
 	@Column(name="subT")
 	private double subt;
 	
-	@NotEmpty
+	
 	@Column(name="Total")
 	private double total;
 

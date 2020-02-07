@@ -1,5 +1,6 @@
 package controlador;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -60,13 +61,28 @@ public class carritoControlador {
 	}
 	
 	public String guardarCompra( int libro, int cantidad, double precio, int descuento) {
+		List<Carritos> ulreg = new ArrayList<>();
+		int co=0;
 		Carritos carrito= new Carritos();
 		carrito.setId_libc_FK(libro);
 		carrito.setCantidad(cantidad);
 		carrito.setPrecioLib(precio);
 		carrito.setDescuentoLib(descuento);
-		int codigo=1+Integer.parseInt(ultimoReg().toString().substring(1,ultimoReg().toString().length()-1));
-		carrito.setCodigo(codigo);
+		try {
+		ulreg=cdao.ultimoReg();
+		String codigo=ulreg.toString().substring(1,ulreg.toString().length()-1);
+		if(codigo.equals("null")) {
+			System.out.println("Estamos con un null");
+			carrito.setCodigo(1);
+		}
+		else {
+			co=Integer.parseInt(codigo);
+			carrito.setCodigo(co+1);
+		}
+		}catch(Exception e) {
+			carrito.setCodigo(1);
+		}
+		
 		System.out.println("Estaos en el carrito: "+carrito.toString());
 		return cdao.insertar(carrito);
 		
@@ -84,6 +100,11 @@ public class carritoControlador {
 	
 	public List<Carritos> ultimoReg() {
 		return cdao.ultimoReg();
+	}
+	
+	public String eliminarDatos() {
+		cdao.eliminardatos();
+		return "ok";
 	}
 
 }

@@ -15,7 +15,7 @@ import javax.persistence.Table;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
-@Entity(name="direcciones")
+@Entity
 @Table(name="direcciones")
 public class Direccion {
 	

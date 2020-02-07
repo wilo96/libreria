@@ -9,18 +9,20 @@ import javax.inject.Inject;
 
 import Datos.facCabDAO;
 import modelo.FacturaCabs;
-import modelo.FacturaDet;
+import modelo.FacturaDets;
 
 @Stateless
 public class facCabControlador {
 	private FacturaCabs facab;
 	public int codU;
+	public int con;
 	@Inject
 	private facCabDAO fcd;
 	
 	@PostConstruct
 	public void init() {
 		facab = new FacturaCabs();
+		con=1;
 	}
 
 	public FacturaCabs getFacab() {
@@ -35,12 +37,12 @@ public class facCabControlador {
 
 	
 	
-int cont=1;
+
 	//modifique esta parte de guardarCabecera
 	public String guardarCabecera(String idPers, int iddirec, int idtarj) {
 		int co=0;
 		//System.out.println(codpers+" "+iddirec+" "+idtarj);
-		List<FacturaDet> fdl=new ArrayList<>();
+		List<FacturaDets> fdl=new ArrayList<>();
 		List<FacturaCabs> ulreg= new ArrayList<>();
 		//FacturaCabs fcab = new FacturaCabs();
 		facab.setId_usufc_FK(idPers);
@@ -77,11 +79,14 @@ int cont=1;
 		//fcab.setCodigo(codU);
 		//fcab.setId_faccab_fk(fdl);
 		//facab.setId_faccab_fk(fdl);
-		if(cont==1)
+		if(con==1)
 		{
+			System.out.println("Si es 1 el contador");
+			System.out.println(facab.toString());
 		fcd.insertarFacCab(facab);
-		cont++;
+		con++;
 		}
+		
 			return String.valueOf(co);
 		
 		

@@ -1,5 +1,6 @@
 package controlador;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -8,11 +9,12 @@ import javax.inject.Inject;
 
 import Datos.facDetDAO;
 import modelo.FacturaCabs;
-import modelo.FacturaDet;
+import modelo.FacturaDets;
 
 @Stateless
 public class facDetControlador {
-	private FacturaDet fade;
+	private FacturaDets fade;
+	private carritoControlador cac;
 	public int codU;
 	
 	@Inject
@@ -20,23 +22,26 @@ public class facDetControlador {
 	
 	@PostConstruct
 	public void init() {
-		fade = new FacturaDet();
+		fade = new FacturaDets();
+		cac = new carritoControlador();
 	}
 
-	public FacturaDet getFade() {
+	public FacturaDets getFade() {
 		return fade;
 	}
 
-	public void setFade(FacturaDet fade) {
+	public void setFade(FacturaDets fade) {
 		this.fade = fade;
 	}
 	
-	public List<FacturaDet> ultReg(){
+	public List<FacturaDets> ultReg(){
 		return fdd.ultimoReg();
 	}
-	
+	//este metodo fue modificado para que salga el generar compra
 	public String guardarDetalle(int codlib, int facab, int canti, int descu, double precio, double subtot, double total) {
-		FacturaDet fcde = new FacturaDet();
+		int co=0;
+		List<FacturaDets> ulreg = new ArrayList<>();
+		FacturaDets fcde = new FacturaDets();
 		fcde.setId_faccab_fk(facab);
 		fcde.setId_facd_FK(codlib);
 		fcde.setCant(canti);
@@ -44,8 +49,25 @@ public class facDetControlador {
 		fcde.setPrecioLib(precio);
 		fcde.setSubt(subtot);
 		fcde.setTotal(total);
-		codU=1+Integer.parseInt(ultReg().toString().substring(1,ultReg().toString().length()-1));
-		fcde.setCodigo(codU);
-		return fdd.insertarFacDet(fcde);
+		try {
+			ulreg=fdd.ultimoReg();
+			String codigo=ulreg.toString().substring(1,ulreg.toString().length()-1);
+			if(codigo.equals("null")) {
+				System.out.println("Estamos con un null");
+				fcde.setCodigo(1);
+				System.out.println("Damos el valor de 1");
+			}
+			else {
+				co=Integer.parseInt(codigo);
+				fcde.setCodigo(co+1);
+			}
+			
+		}catch(Exception e)
+		{
+			fcde.setCodigo(1);
+			//ulreg.add(fcab);
+		}
+		fdd.insertarFacDet(fcde);
+		return "ok";
 	}
 }

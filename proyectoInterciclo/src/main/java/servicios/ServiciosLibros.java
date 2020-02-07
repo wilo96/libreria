@@ -13,6 +13,7 @@ import javax.ws.rs.QueryParam;
 import Datos.facCabDAO;
 import controlador.carritoControlador;
 import controlador.categoriaControlador;
+import controlador.direccionControlador;
 import controlador.facCabControlador;
 import controlador.facDetControlador;
 import controlador.libroControlador;
@@ -50,6 +51,9 @@ public class ServiciosLibros {
 	
 	@Inject
 	private facDetControlador fcd;
+	
+	@Inject
+	private direccionControlador dc;
 
 	@GET
 	@Path("consultar")
@@ -156,8 +160,16 @@ public class ServiciosLibros {
 			
 			System.out.println(carritos);
 			System.out.println(facab);
-			fcd.guardarDetalle(carritos.getId_libc_FK(), (facab-1), carritos.getCantidad(), carritos.getDescuentoLib(), carritos.getPrecioLib(), Double.valueOf(carritos.getCantidad())*(carritos.getPrecioLib()*(Double.valueOf(carritos.getDescuentoLib())/100)), (Double.valueOf(carritos.getCantidad())*(carritos.getPrecioLib()*(Double.valueOf(carritos.getDescuentoLib()/100)))*0.12));
+			int cantidad = carritos.getCantidad();
+			double precio = carritos.getPrecioLib();
+			int descuento = carritos.getDescuentoLib();
+			double valdesc = precio - (precio * (Double.valueOf(descuento)/100));
+			double subtotal = cantidad *  valdesc;
+			double total = subtotal * 0.12;
+			System.out.println(carritos.getId_libc_FK() +","+ (facab)+","+ cantidad+","+ descuento+","+ precio+","+ subtotal+","+ total);			
+			fcd.guardarDetalle(carritos.getId_libc_FK(), (facab), cantidad, descuento, precio, subtotal, total);
 		}
+		cac.eliminarDatos();
 		//fcd.guardarDetalle(codlib, facab, canti, descu, precio, subtot, total)
 		//return cac.listaComprasT(idpers, iddirec, idtarj);
 		return "ok";
@@ -180,12 +192,26 @@ public class ServiciosLibros {
 	}
 	
 	@GET
+	@Path("/cleartabla")
+	@Produces("application/json")
+	public String limpiarcarrito(){
+		return cac.eliminarDatos();
+	}
+	
+	@GET
 	@Path("/ultreg")
 	@Produces("application/json")
 	public List<Carritos> ultreg(){
 		return cac.ultimoReg();
 	}
-	
+	//nuevo servicio
+	@GET
+	@Path("/nuevadir")
+	@Produces("application/json")
+	public String nuevaDirec(@QueryParam("callep")String callep, @QueryParam("calles")String calles, @QueryParam("numcasa")String numcasa,@QueryParam("ciud")String ciud,@QueryParam("prov")String prov, @QueryParam("idusu") String usuario){
+		System.out.println(callep+" "+calles+" "+numcasa+" "+ciud+" "+prov+" "+usuario);
+		return dc.guardarDireccion(callep, calles, numcasa, ciud, prov, usuario);
+	}
 	
 	
 	

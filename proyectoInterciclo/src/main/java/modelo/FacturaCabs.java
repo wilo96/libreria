@@ -33,7 +33,7 @@ public class FacturaCabs {
 	
 	@OneToMany(cascade = {CascadeType.ALL}, fetch = FetchType.EAGER)
 	@JoinColumn(name = "id_faccab_fk", referencedColumnName = "codigo")
-	private List<FacturaDet> id_faccab_fk;
+	private List<FacturaDets> id_faccab_fk;
 
 	public int getCodigo() {
 		return codigo;
@@ -69,11 +69,11 @@ public class FacturaCabs {
 		this.id_tarjet_FK = id_tarjet_FK;
 	}
 
-	public List<FacturaDet> getId_faccab_fk() {
+	public List<FacturaDets> getId_faccab_fk() {
 		return id_faccab_fk;
 	}
 
-	public void setId_faccab_fk(List<FacturaDet> id_faccab_fk) {
+	public void setId_faccab_fk(List<FacturaDets> id_faccab_fk) {
 		this.id_faccab_fk = id_faccab_fk;
 	}
 
