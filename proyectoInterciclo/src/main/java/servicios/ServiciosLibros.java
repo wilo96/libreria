@@ -17,10 +17,14 @@ import controlador.direccionControlador;
 import controlador.facCabControlador;
 import controlador.facDetControlador;
 import controlador.libroControlador;
+import controlador.likesControlador;
+import controlador.tarjetaControlador;
 import modelo.Carritos;
 import modelo.Categoria;
+import modelo.Direcciones;
 import modelo.FacturaCabs;
 import modelo.Libros;
+import modelo.Tarjetas;
 import controlador.usuarioControlador;
 import controlador.votosControlador;
 import modelo.Usuarios;
@@ -54,6 +58,12 @@ public class ServiciosLibros {
 	
 	@Inject
 	private direccionControlador dc;
+	
+	@Inject
+	private tarjetaControlador tc;
+	
+	@Inject
+	private likesControlador lic;
 
 	@GET
 	@Path("consultar")
@@ -213,7 +223,33 @@ public class ServiciosLibros {
 		return dc.guardarDireccion(callep, calles, numcasa, ciud, prov, usuario);
 	}
 	
+	@GET
+	@Path("/listadirec")
+	@Produces("application/json")
+	public List<Direcciones> listarDirec(){
+		return dc.listado();
+	}
 	
+	@GET
+	@Path("/listatarj")
+	@Produces("application/json")
+	public List<Tarjetas> listarTarj(){
+		return tc.listado();
+	}
 	
+	@GET
+	@Path("/nuevatar")
+	@Produces("application/json")
+	public String nuevaTarj(@QueryParam("numt")String numt, @QueryParam("codver")String ccodverf, @QueryParam("empresa")String empresa,@QueryParam("cedula")String cedula){
+		System.out.println(numt+" "+ccodverf+" "+empresa+" "+cedula);
+		return tc.guardarTarjetas(ccodverf, numt, empresa, cedula);
+	}
+	
+	@GET
+	@Path("/listalikes")
+	@Produces("application/json")
+	public List<Object[]> listarLikes(){
+		return lic.listaLikes();
+	}
 	
 }

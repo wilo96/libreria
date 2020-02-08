@@ -5,7 +5,7 @@ import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.annotation.PostConstruct;
 import javax.ejb.Stateless;
-import javax.faces.view.ViewScoped;
+import javax.faces.bean.ViewScoped;
 import javax.inject.Inject;
 
 import Datos.categoriasDAO;
@@ -14,6 +14,8 @@ import modelo.Libros;
 import modelo.Usuarios;
 
 
+@ManagedBean
+@ViewScoped
 @Stateless
 public class libroControlador {
 	private Libros libro;

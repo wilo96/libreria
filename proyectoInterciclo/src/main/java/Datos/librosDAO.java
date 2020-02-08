@@ -33,6 +33,12 @@ public class librosDAO {
 		l=em.find(Libros.class, codigo);
 		return l;
 	}
+	public Libros buscarL(int codigo) {
+		System.out.println("dao "+codigo);
+		Libros l;
+		l=em.find(Libros.class, codigo);
+		return l;
+	}
 
 	public List<Libros> listarLibro() {
 		String jpql = "SELECT l FROM Libros l";

@@ -7,7 +7,7 @@ import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
-import modelo.Direccion;
+import modelo.Direcciones;
 import modelo.Usuarios;
 
 @Stateless
@@ -17,11 +17,11 @@ public class direccionesDAO {
 	private EntityManager em;
 	
 	
-	public void insertar(Direccion direcc) {
+	public void insertar(Direcciones direcc) {
 		em.persist(direcc);
 	}
 	
-	public void editar(Direccion direcc) {
+	public void editar(Direcciones direcc) {
 		em.merge(direcc);
 	}
 	
@@ -29,16 +29,16 @@ public class direccionesDAO {
 		em.remove(buscar(cedula));
 	}
 	
-	public Direccion buscar(String cedula) {
-		Direccion d;
-		d=em.find(Direccion.class, cedula);
+	public Direcciones buscar(String cedula) {
+		Direcciones d;
+		d=em.find(Direcciones.class, cedula);
 		return d;
 	}
 
-	public List<Direccion> listarDireccion() {
-		String jpql = "SELECT d FROM direcciones d";
-		Query q = em.createQuery(jpql, Direccion.class);
-		List<Direccion> ddirec = q.getResultList();
+	public List<Direcciones> listarDireccion() {
+		String jpql = "SELECT d FROM Direcciones d";
+		Query q = em.createQuery(jpql, Direcciones.class);
+		List<Direcciones> ddirec = q.getResultList();
 		System.out.println("direccionessssss"+ddirec.toString());
 		return ddirec;
 	}

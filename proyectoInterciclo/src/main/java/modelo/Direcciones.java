@@ -17,7 +17,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 @Table(name="direcciones")
-public class Direccion {
+public class Direcciones {
 	
 	@Id 
 	@Column(name="codigo")

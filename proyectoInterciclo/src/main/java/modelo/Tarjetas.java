@@ -15,9 +15,9 @@ import javax.persistence.Table;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
-@Entity(name="tarjetas")
+@Entity
 @Table(name="tarjetas")
-public class Tarjeta {
+public class Tarjetas {
 	@Id
 	@Column(name="codigo")
 	@GeneratedValue(strategy=GenerationType.AUTO )

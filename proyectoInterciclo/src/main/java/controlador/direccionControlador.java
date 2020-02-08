@@ -10,37 +10,37 @@ import javax.inject.Inject;
 
 import Datos.direccionesDAO;
 import Datos.usuariosDAO;
-import modelo.Direccion;
+import modelo.Direcciones;
 import modelo.Usuarios;
 
 @ManagedBean
 @ViewScoped
 public class direccionControlador {
-	private Direccion direc;
-	private List<Direccion> listaD;
+	private Direcciones direc;
+	private List<Direcciones> listaD;
 	 
 	@Inject
 	private direccionesDAO ddao;
 	
 	@PostConstruct
 	public void init() {
-		direc = new Direccion();
-		listaD= new ArrayList<Direccion>();
+		direc = new Direcciones();
+		listaD= new ArrayList<Direcciones>();
 	}
 
-	public Direccion getDirec() {
+	public Direcciones getDirec() {
 		return direc;
 	}
 
-	public void setDirec(Direccion direc) {
+	public void setDirec(Direcciones direc) {
 		this.direc = direc;
 	}
 
-	public List<Direccion> getListaD() {
+	public List<Direcciones> getListaD() {
 		return listaD;
 	}
 
-	public void setListaD(List<Direccion> listaD) {
+	public void setListaD(List<Direcciones> listaD) {
 		this.listaD = listaD;
 	}
 
@@ -52,17 +52,17 @@ public class direccionControlador {
 		this.ddao = ddao;
 	}
 	
-	public List<Direccion> listado() {
+	public List<Direcciones> listado() {
 		return ddao.listarDireccion();
 	}
 	
-	public Direccion filtrar() {
+	public Direcciones filtrar() {
 		this.direc=ddao.buscar(this.direc.getId_usu_FK());
 		 return ddao.buscar(this.direc.getId_usu_FK());
 	}
 
 	public String guardarDireccion(String callep, String calles, String numcaa, String ciud, String prov, String usu) {
-		Direccion dir = new Direccion();
+		Direcciones dir = new Direcciones();
 		dir.setCallePrinc(callep);
 		dir.setCalleSec(calles);
 		dir.setNumCasa(numcaa);
@@ -85,7 +85,7 @@ public class direccionControlador {
 	}
 	
 	public String Buscar() {
-		Direccion d=ddao.buscar(direc.getId_usu_FK());
+		Direcciones d=ddao.buscar(direc.getId_usu_FK());
 		listado();
 		direc=d;
 		return "ok";
