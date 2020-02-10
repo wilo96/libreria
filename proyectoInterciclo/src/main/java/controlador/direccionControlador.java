@@ -52,8 +52,8 @@ public class direccionControlador {
 		this.ddao = ddao;
 	}
 	
-	public List<Direcciones> listado() {
-		return ddao.listarDireccion();
+	public List<Direcciones> listado(String cedula) {
+		return ddao.listarDireccion(cedula);
 	}
 	
 	public Direcciones filtrar() {
@@ -74,19 +74,19 @@ public class direccionControlador {
 		return "ok";
 	}
 	
-	public String editarDireccion() {
-		ddao.editar(direc);
+	public String editarDireccion(Direcciones direcc) {
+		ddao.editar(direcc);
 		return "ok";
 	}
 	
-	public String eliminarDireccion(String cedula) {
-		ddao.eliminar(cedula);
+	public String eliminarDireccion(int id) {
+		ddao.eliminar(id);
 		return "ok";
 	}
 	
-	public String Buscar() {
+	public String Buscar(String cedula) {
 		Direcciones d=ddao.buscar(direc.getId_usu_FK());
-		listado();
+		listado(cedula);
 		direc=d;
 		return "ok";
 	}

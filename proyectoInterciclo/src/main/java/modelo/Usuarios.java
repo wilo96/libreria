@@ -38,6 +38,10 @@ public class Usuarios {
 		@NotEmpty
 		@Column(name="contrasenia")
 		private String contrasenia;
+		
+		/*@OneToMany(cascade = {CascadeType.ALL}, fetch = FetchType.LAZY)
+		@JoinColumn(name = "id_usuta_fk", referencedColumnName = "cedula")
+		private List<Carritos> id_usuta_FK;*/
 		/*
 		@OneToMany(cascade = {CascadeType.ALL}, fetch = FetchType.EAGER)
 		@JoinColumn(name = "id_gustausu_fk", referencedColumnName = "cedula")

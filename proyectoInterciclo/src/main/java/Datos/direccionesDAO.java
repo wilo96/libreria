@@ -25,8 +25,9 @@ public class direccionesDAO {
 		em.merge(direcc);
 	}
 	
-	public void eliminar(String cedula) {
-		em.remove(buscar(cedula));
+	public void eliminar(int id) {
+		Direcciones d = em.find(Direcciones.class, id);
+		em.remove(d);
 	}
 	
 	public Direcciones buscar(String cedula) {
@@ -35,8 +36,8 @@ public class direccionesDAO {
 		return d;
 	}
 
-	public List<Direcciones> listarDireccion() {
-		String jpql = "SELECT d FROM Direcciones d";
+	public List<Direcciones> listarDireccion(String cedula) {
+		String jpql = "SELECT d FROM Direcciones d where d.id_usu_FK='"+cedula+"'";
 		Query q = em.createQuery(jpql, Direcciones.class);
 		List<Direcciones> ddirec = q.getResultList();
 		System.out.println("direccionessssss"+ddirec.toString());

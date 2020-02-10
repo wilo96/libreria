@@ -17,11 +17,6 @@ public class carritoDAO {
 	private EntityManager em;
 	
 	public String insertar(Carritos carrito) {
-		//em.persist(carrito);
-		//int codigo=1+Integer.parseInt(ultimoReg().toString().substring(1,ultimoReg().toString().length()-1));
-		//String sql = "INSERT INTO carritos VALUES ("+codigo+","+cantidad+","+descuento+","+libro+","+precio+")";
-		//Query q = em.createNativeQuery(sql, Carritos.class);
-		//Query q = em.createQuery(sql);
 		System.out.println("Llegue aqui "+carrito.toString());
 		em.persist(carrito);
 		return "Insertada Compra";
@@ -32,33 +27,34 @@ public class carritoDAO {
 	}
 	
 	public void eliminar(int codigo) {
-		em.remove(codigo);
+		Carritos c = em.find(Carritos.class, codigo);
+		em.remove(c);
 	}
 	
-	public void eliminardatos() {
-		Query q = em.createQuery("DELETE FROM Carritos");
+	public void eliminardatos(String cedu) {
+		Query q = em.createQuery("DELETE FROM Carritos WHERE id_usuta_FK='"+cedu+"'");
 		q.executeUpdate();
 	}
 	
 //modificado	
-	public List<Carritos> listaCarro(){
+	public List<Carritos> listaCarro(String cedu){
 		//String sql="SELECT c FROM Carritos c";
-		String sql ="SELECT c.codigo, c.cantidad, c.precioLib, c.descuentoLib, l.titulo, l.imagen, c.id_libc_FK FROM Carritos c, Libros l where l.codigo= c.id_libc_FK";
+		String sql ="SELECT c.codigo, c.cantidad, c.precioLib, c.descuentoLib, l.titulo, l.imagen, c.id_libc_FK FROM Carritos c, Libros l where l.codigo= c.id_libc_FK and c.id_usuta_FK='"+cedu+"'";
 		Query q = em.createQuery(sql, Object[].class);
 		List<Carritos> carro = q.getResultList();
 		return carro;
 		
 	}
-	public List<Carritos> listaCarroTot(){
-		String sql="SELECT c FROM Carritos c";
+	public List<Carritos> listaCarroTot(String cedula){
+		String sql="SELECT c FROM Carritos c where c.id_usuta_FK='"+cedula+"'";
 		//String sql ="SELECT c.codigo, c.cantidad, c.precioLib, c.descuentoLib, l.titulo, l.imagen, c.id_libc_FK FROM Carritos c, Libros l where l.codigo= c.id_libc_FK";
 		Query q = em.createQuery(sql, Object[].class);
 		List<Carritos> carro = q.getResultList();
 		return carro;
 		
 	}
-	public List<Carritos> listaCarritoT(){
-		String sql="SELECT c FROM Carritos c";
+	public List<Carritos> listaCarritoT(String cedula){
+		String sql="SELECT c FROM Carritos c where c.id_usuta_FK='"+cedula+"'";
 		//String sql ="SELECT c.codigo, c.cantidad, c.precioLib, c.descuentoLib, l.titulo, l.imagen, c.id_libc_FK FROM Carritos c, Libros l where l.codigo= c.id_libc_FK";
 		Query q = em.createQuery(sql, Carritos.class);
 		List<Carritos> carro = q.getResultList();

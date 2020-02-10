@@ -14,6 +14,8 @@ import Datos.usuariosDAO;
 import modelo.Usuarios;
 
 @Stateless
+@ManagedBean
+@ViewScoped
 public class usuarioControlador {
 	//private String campoCedula;
 	private String campoCedula;
@@ -85,6 +87,11 @@ public class usuarioControlador {
 	}
 	
 	public String guardarUsuarioServicio(Usuarios usuarioo) {
+		System.out.println(usuarioo);
+		udao.insertar(usuarioo);
+		return null;
+	}
+	public String guardarUsuarioServicioM(Usuarios usuarioo) {
 		System.out.println(usuarioo);
 		udao.insertar(usuarioo);
 		return null;

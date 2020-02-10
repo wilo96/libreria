@@ -1,10 +1,16 @@
 package modelo;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.hibernate.validator.constraints.NotEmpty;
@@ -35,6 +41,10 @@ public class Carritos {
 	@Column(name = "id_libc_FK")
 	private int id_libc_FK;
 
+	@Column(name = "id_usuta_FK")
+	private String id_usuta_FK;
+	
+	
 	public int getCodigo() {
 		return codigo;
 	}
@@ -73,6 +83,14 @@ public class Carritos {
 
 	public void setId_libc_FK(int id_libc_FK) {
 		this.id_libc_FK = id_libc_FK;
+	}
+	
+	public String getId_usuta_FK() {
+		return id_usuta_FK;
+	}
+
+	public void setId_usuta_FK(String id_usuta_FK) {
+		this.id_usuta_FK = id_usuta_FK;
 	}
 
 	@Override

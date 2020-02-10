@@ -25,18 +25,18 @@ public class tarjetasDAO {
 		em.merge(tarj);
 	}
 	
-	public void eliminar(String cedula) {
-		em.remove(buscar(cedula));
+	public void eliminar(int id) {
+		em.remove(buscar(id));
 	}
 	
-	public Tarjetas buscar(String cedula) {
+	public Tarjetas buscar(int id) {
 		Tarjetas t;
-		t=em.find(Tarjetas.class, cedula);
+		t=em.find(Tarjetas.class, id);
 		return t;
 	}
 
-	public List<Tarjetas> listarTarjetas() {
-		String jpql = "SELECT t FROM Tarjetas t";
+	public List<Tarjetas> listarTarjetas(String cedu) {
+		String jpql = "SELECT t FROM Tarjetas t where t.id_usuta_FK='"+cedu+"'";
 		Query q = em.createQuery(jpql, Tarjetas.class);
 		List<Tarjetas> ttarje = q.getResultList();
 		System.out.println("tarjetasssss"+ttarje.toString());

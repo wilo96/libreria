@@ -41,10 +41,8 @@ public class facCabControlador {
 	//modifique esta parte de guardarCabecera
 	public String guardarCabecera(String idPers, int iddirec, int idtarj) {
 		int co=0;
-		//System.out.println(codpers+" "+iddirec+" "+idtarj);
 		List<FacturaDets> fdl=new ArrayList<>();
 		List<FacturaCabs> ulreg= new ArrayList<>();
-		//FacturaCabs fcab = new FacturaCabs();
 		facab.setId_usufc_FK(idPers);
 		facab.setId_direcc_FK(iddirec);
 		facab.setId_tarjet_FK(idtarj);
@@ -63,22 +61,9 @@ public class facCabControlador {
 		}catch(Exception e)
 		{
 			facab.setCodigo(1);
-			//ulreg.add(fcab);
 		}
-		//System.out.println("Esta aqui "+ulreg.toString());
 		System.out.println("Pasamos aqui seteando "+facab.toString());
-		//System.out.println(fcab.getId_usufc_FK()+" "+fcab.getId_direcc_FK()+" "+fcab.getId_tarjet_FK());
-		//System.out.println((ultReg().toString().substring(1,ultReg().toString().length()-1)));
-		
-			//fcab.setCodigo(1);
-			//fcab.setId_faccab_fk(fdl);
-			//System.out.println(fcab.toString());
-			//return fcd.insertarFacCab(fcab);
-	
-		//codU=1+Integer.parseInt(ultReg().toString().substring(1,ultReg().toString().length()-1));
-		//fcab.setCodigo(codU);
-		//fcab.setId_faccab_fk(fdl);
-		//facab.setId_faccab_fk(fdl);
+
 		if(con==1)
 		{
 			System.out.println("Si es 1 el contador");
@@ -88,9 +73,6 @@ public class facCabControlador {
 		}
 		
 			return String.valueOf(co);
-		
-		
-		
 	}
 
 }

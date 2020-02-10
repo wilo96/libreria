@@ -96,9 +96,9 @@ public class ServiciosLibros {
 	@Path("/nuevacompra")
 	@Produces("application/json")
 	//@Consumes("application/json")
-	public String crearCompra(@QueryParam("libro") int libro, @QueryParam("cantidad") int cantidad, @QueryParam("precio") double precio, @QueryParam("descuento") int descuento)
+	public String crearCompra(@QueryParam("usu") String cedula, @QueryParam("libro") int libro, @QueryParam("cantidad") int cantidad, @QueryParam("precio") double precio, @QueryParam("descuento") int descuento)
 	{
-		return cac.guardarCompra(libro, cantidad, precio, descuento);
+		return cac.guardarCompra(cedula, libro, cantidad, precio, descuento);
 	}
 	
 	@GET
@@ -130,6 +130,15 @@ public class ServiciosLibros {
 	}
 	
 	@GET
+	@Path("/buscalibro")
+	@Produces("application/json")
+	//@Consumes("application/json")
+	public Libros buscaLibro(@QueryParam("libro") int libro)
+	{
+		return lc.filtrar(libro);
+	}
+	
+	@GET
 	@Path("/listVotos")
 	@Produces("application/json")
 	public List<Object[]> getVotos(){
@@ -140,28 +149,66 @@ public class ServiciosLibros {
 	@GET
 	@Path("/listCompras")
 	@Produces("application/json")
-	public List<Carritos> getCarrito(){
-		return cac.listaCompras();
+	public List<Carritos> getCarrito(@QueryParam("cedu") String cedu){
+		return cac.listaCompras(cedu);
 	}
 	
 	@GET
 	@Path("/listComprasTotales")
 	@Produces("application/json")
-	public List<Carritos> getCarritoTotal(){
-		return cac.listaComprasTot();
+	public List<Carritos> getCarritoTotal(@QueryParam("cedu") String cedu){
+		return cac.listaComprasTot(cedu);
 	}
 	
 	//añadido de servicio
 	@GET
+	@Path("/consultastock")
+	@Produces("application/json")
+	public String consultaStock(@QueryParam("cedu") String cedu){
+		String mensaje="";
+		int contador=0, pos=0;
+		List<Libros> libros = lc.listado();
+		List<Carritos> compras = getCarritoTotal(cedu);
+		for (Carritos carritos : compras) {
+			System.out.println(carritos.toString());
+			Libros l = lc.filtrar(carritos.getId_libc_FK());
+			System.out.println(l.toString());
+			if(carritos.getCantidad() < l.getStock()) {
+				mensaje = mensaje+";"+(l.getStock()-carritos.getCantidad());
+				
+			}
+			else
+			{
+				contador=contador+1;
+			}
+		}
+		if(contador == 0) {
+			
+			return "ok";
+		}
+		else
+		{
+			System.out.println(contador);
+			return "Sin Stock";
+		}
+		
+	}
+	
+	@GET
 	@Path("/listComprasT")
 	@Produces("application/json")
 	public String getCarritoT(@QueryParam("idPers") String idpers, @QueryParam("iddirec") int iddirec, @QueryParam("idtarj") int idtarj ){
-		
+		String stockres=consultaStock(idpers);
+		String [] valorestock=stockres.split(";");
+		if(stockres.equals("Sin Stock")) {
+			return "No";
+		}
+		else {
 		fcc.guardarCabecera(idpers, iddirec, idtarj);
 		String registro = fcc.guardarCabecera(idpers, iddirec, idtarj);
 		int facab=Integer.parseInt(registro);
 		List<FacturaCabs> ulreg;
-		List<Carritos> compras = getCarritoTotal();
+		List<Carritos> compras = getCarritoTotal(idpers);
 		//System.out.println(compras.toString());
 		for (Carritos carritos : compras) {
 			/*ulreg=fcdao.ultimoReg();
@@ -176,13 +223,17 @@ public class ServiciosLibros {
 			double valdesc = precio - (precio * (Double.valueOf(descuento)/100));
 			double subtotal = cantidad *  valdesc;
 			double total = subtotal * 0.12;
-			System.out.println(carritos.getId_libc_FK() +","+ (facab)+","+ cantidad+","+ descuento+","+ precio+","+ subtotal+","+ total);			
+			System.out.println(carritos.getId_libc_FK() +","+ (facab)+","+ cantidad+","+ descuento+","+ precio+","+ subtotal+","+ total);	
+			Libros l = lc.filtrar(carritos.getId_libc_FK());
+			l.setStock(l.getStock()-cantidad);
+			lc.editarLibros(l);
 			fcd.guardarDetalle(carritos.getId_libc_FK(), (facab), cantidad, descuento, precio, subtotal, total);
 		}
-		cac.eliminarDatos();
+		cac.eliminarDatos(idpers);
 		//fcd.guardarDetalle(codlib, facab, canti, descu, precio, subtot, total)
 		//return cac.listaComprasT(idpers, iddirec, idtarj);
 		return "ok";
+		}
 	}
 	//fin añadido
 	
@@ -204,8 +255,8 @@ public class ServiciosLibros {
 	@GET
 	@Path("/cleartabla")
 	@Produces("application/json")
-	public String limpiarcarrito(){
-		return cac.eliminarDatos();
+	public String limpiarcarrito(@QueryParam("cedu") String cedu){
+		return cac.eliminarDatos(cedu);
 	}
 	
 	@GET
@@ -222,19 +273,86 @@ public class ServiciosLibros {
 		System.out.println(callep+" "+calles+" "+numcasa+" "+ciud+" "+prov+" "+usuario);
 		return dc.guardarDireccion(callep, calles, numcasa, ciud, prov, usuario);
 	}
+	//metodos creados
+	@GET
+	@Path("/modificarcarro")
+	@Produces("application/json")
+	public String modifCarro(@QueryParam("libro") int carroid, @QueryParam("libro") int libro, @QueryParam("cantidad") int cantidad, @QueryParam("precio") double precio, @QueryParam("descuento") int descuento){
+		Carritos ca = new Carritos();
+		ca.setCantidad(cantidad);
+		ca.setDescuentoLib(descuento);
+		ca.setId_libc_FK(libro);
+		ca.setPrecioLib(precio);
+		ca.setCodigo(carroid);
+		return cac.editarCompra(ca);
+	}
 	
+	@GET
+	@Path("/elimitcarro")
+	@Produces("application/json")
+	public String elimitCarro(@QueryParam("libro") int carroid){
+		Carritos carro = new Carritos();
+		carro.setCodigo(carroid);
+		return cac.eliminarCompra(carro);
+	}
+	
+	@GET
+	@Path("/modificardirec")
+	@Produces("application/json")
+	public String modifDirec(@QueryParam("direc") int dirid, @QueryParam("callep") String callep, @QueryParam("calles") String calles, @QueryParam("numcasa") String numcasa, @QueryParam("prov") String provincia, @QueryParam("ciudad") String ciudad, @QueryParam("cedula") String cedula){
+		Direcciones dir = new Direcciones();
+		dir.setCallePrinc(callep);
+		dir.setCalleSec(calles);
+		dir.setCiudad(ciudad);
+		dir.setNumCasa(numcasa);
+		dir.setProvincia(provincia);
+		dir.setId_usu_FK(cedula);
+		return dc.editarDireccion(dir);
+	}
+	
+	@GET
+	@Path("/elimitdirec")
+	@Produces("application/json")
+	public String elimitDirec(@QueryParam("iddiec") int iddir){
+		Direcciones dir = new Direcciones();
+		dir.setCodigo(iddir);
+		return dc.eliminarDireccion(iddir);
+	}
+	
+	@GET
+	@Path("/modificartarj")
+	@Produces("application/json")
+	public String modifTarj(@QueryParam("idtarj") int tarjid, @QueryParam("numtarj") String numtarj, @QueryParam("identif") String ident, @QueryParam("Empresa") String empresa, @QueryParam("Usuario") String Usuario){
+		Tarjetas t = new Tarjetas();
+		t.setCodigo(tarjid);
+		t.setCodVerif(ident);
+		t.setEmpTarj(empresa);
+		t.setId_usuta_FK(Usuario);
+		t.setNumTarj(numtarj);
+		return tc.editarTarjetas(t);
+	}
+	
+	@GET
+	@Path("/elimittarj")
+	@Produces("application/json")
+	public String elimitTarj(@QueryParam("idtarj") int tarjid){
+		Tarjetas t = new Tarjetas();
+		t.setCodigo(tarjid);
+		return tc.eliminarTarjeta(tarjid);
+	}
+	//fin
 	@GET
 	@Path("/listadirec")
 	@Produces("application/json")
-	public List<Direcciones> listarDirec(){
-		return dc.listado();
+	public List<Direcciones> listarDirec(@QueryParam("cedu") String cedula){
+		return dc.listado(cedula);
 	}
 	
 	@GET
 	@Path("/listatarj")
 	@Produces("application/json")
-	public List<Tarjetas> listarTarj(){
-		return tc.listado();
+	public List<Tarjetas> listarTarj(@QueryParam("cedu") String cedula){
+		return tc.listado(cedula);
 	}
 	
 	@GET

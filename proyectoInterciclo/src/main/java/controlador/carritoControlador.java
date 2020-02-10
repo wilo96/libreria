@@ -37,16 +37,16 @@ public class carritoControlador {
 		this.carrito=carrito;
 	}
 	
-	public List<Carritos> listaCompras(){
-		return cdao.listaCarro();
+	public List<Carritos> listaCompras(String cedu){
+		return cdao.listaCarro(cedu);
 	}
 	
-	public List<Carritos> listaComprasTot(){
-		return cdao.listaCarroTot();
+	public List<Carritos> listaComprasTot(String cedu){
+		return cdao.listaCarroTot(cedu);
 	}
 	
 	public List<Carritos> listaComprasT(String idpers, int iddirec, int idtarj){
-		List<Carritos> elemen=cdao.listaCarritoT();
+		List<Carritos> elemen=cdao.listaCarritoT(idpers);
 		System.out.println(elemen.toString());
 		fcc.guardarCabecera(idpers, iddirec, idtarj);
 		//int facab = Integer.parseInt(fcc.ultReg().toString().substring(1,fcc.ultReg().toString().length()-1));
@@ -55,18 +55,19 @@ public class carritoControlador {
 		//	guardarCompra(elem.getId_libc_FK(), elem.getCantidad(), elem.getPrecioLib(), elem.getDescuentoLib());
 			System.out.println(elem.toString());
 		}
-		System.out.println(cdao.listaCarritoT().toString());
-		return cdao.listaCarritoT();
+		System.out.println(cdao.listaCarritoT(idpers).toString());
+		return cdao.listaCarritoT(idpers);
 		
 	}
 	
-	public String guardarCompra( int libro, int cantidad, double precio, int descuento) {
+	public String guardarCompra( String cedula, int libro, int cantidad, double precio, int descuento) {
 		List<Carritos> ulreg = new ArrayList<>();
 		int co=0;
 		Carritos carrito= new Carritos();
 		carrito.setId_libc_FK(libro);
 		carrito.setCantidad(cantidad);
 		carrito.setPrecioLib(precio);
+		carrito.setId_usuta_FK(cedula);
 		carrito.setDescuentoLib(descuento);
 		try {
 		ulreg=cdao.ultimoReg();
@@ -88,22 +89,22 @@ public class carritoControlador {
 		
 	}
 	
-	public String editarCompra() {
-		cdao.editar(carrito);
-		return null;
+	public String editarCompra(Carritos carro) {
+		cdao.editar(carro);
+		return "ok";
 	}
 	
-	public String eliminarCompra(int codigo) {
-		cdao.eliminar(codigo);
-		return null;
+	public String eliminarCompra(Carritos carro) {
+		cdao.eliminar(carro.getCodigo());
+		return "ok";
 	}
 	
 	public List<Carritos> ultimoReg() {
 		return cdao.ultimoReg();
 	}
 	
-	public String eliminarDatos() {
-		cdao.eliminardatos();
+	public String eliminarDatos(String cedu) {
+		cdao.eliminardatos(cedu);
 		return "ok";
 	}
 

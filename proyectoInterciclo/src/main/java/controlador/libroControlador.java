@@ -56,20 +56,18 @@ public class libroControlador {
 		return null;
 	}
 
-
-	/*
->>>>>>> branch 'master' of https://github.com/wilo96/libreria.git
-	public Libro filtrar() {
-		this.libro=ldao.buscar(this.libro.getCodigo());
-		 return ldao.buscar(this.libro.getCodigo());
-	}*/
-	public Libros filtrar() {
-		 return ldao.buscar(this.libro.getCodigo());
+	public Libros filtrar(int cod) {
+		 return ldao.buscar(cod);
 	}
 
 	
 	public String editarLibro() {
 		ldao.editar(libro);
+		return "blank";
+	}
+	
+	public String editarLibros(Libros l) {
+		ldao.editar(l);
 		return "blank";
 	}
 	

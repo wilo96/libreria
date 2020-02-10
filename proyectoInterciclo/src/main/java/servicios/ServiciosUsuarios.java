@@ -24,6 +24,20 @@ public class ServiciosUsuarios {
 	public String BuscarUsuario(@QueryParam("correo") String correo, @QueryParam("contra") String contra) {
 		return uc.BuscarLog(correo, contra);
 	}
+	
+	@GET
+	@Path("/nuevousu")
+	@Produces("application/json")
+	public String registrarUsuarioMovil(@QueryParam("cedula") String cedu,@QueryParam("nombres") String nomb,@QueryParam("correo") String correo,@QueryParam("contra") String contra,@QueryParam("telef") String telf) {
+		Usuarios usuarioo = new Usuarios();
+		usuarioo.setCedula(cedu);
+		usuarioo.setAdministrador("NO");
+		usuarioo.setContrasenia(contra);
+		usuarioo.setCorreo(correo);
+		usuarioo.setNombres(nomb);
+		usuarioo.setTelefono(telf);
+		return uc.guardarUsuarioServicioM(usuarioo);
+	}
 	/*
 	@GET
 	@Path("/listUsuarios")
